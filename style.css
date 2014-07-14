@@ -1,0 +1,52 @@
+html, body
+{
+    height: 100%;
+}
+
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+.headerContainer{
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 65px;
+	background-color: blue;
+	margin: 0px;
+}
+
+#rightheader{
+	position: absolute;
+	background-color: green;
+	width: 100%;
+	height: 100%;
+	float: right;
+}
+
+#leftheader{
+	position: absolute;
+	background-color: red;
+	width: 210px;
+	height: 100%;
+}
+
+.leftsideBar{
+	position: relative;
+	width: 210px;
+	height: 100%;
+	background-color: blue;
+}
+
+#leftsidebarContent{
+	position:static;
+	margin:0 auto;
+	background-color: green;
+}
+
+#starContainer{
+	display: inline;
+	padding: 30px;
+}
