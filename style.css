@@ -2,6 +2,13 @@ html, body
 {
     height: 100%;
     font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: url("srabi-foods-wallpaper-hd.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 *
@@ -30,12 +37,13 @@ html, body
 
 #leftheader{
 	position: absolute;
-	background-color: #D64541;
+	background-color: #F39C12;
 	width: 240px;
 	height: 100%;
 }
 
 .leftsideBar{
+	float: left;
 	position: relative;
 	width: 240px;
 	height: 100%;
@@ -76,8 +84,8 @@ html, body
 	padding-top: 17px;
 	padding-right: 100px;
 	float: right;
-	font-size: 15px;
-	color: #22313F;
+	font-size: 13px;
+	color: white;
 	padding-left: 300px;
 }
 
@@ -96,6 +104,87 @@ color: white;
 font-size: 13px;
 background-color: #22313F;
 
+}
+
+#mainBody{
+	opacity: 0;
+}
+
+
+.main{
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+	left: 1940px;
+	top: 300px;
+	width:1360px;
+	height: 718px;
+}
+
+.navBar{
+	bottom: 500px;
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: black;
+	opacity: 0.8;
+	color: white;
+}
+
+.navBar_item{
+	padding-top: 10px;
+	text-align: center;
+	left: 0px;
+	height: 20px;
+	color: white;
+}
+
+#all{
+	position: absolute;
+	float: left;
+	width: 25%;
+}
+
+#easy{
+	position: absolute;
+	float: left;
+	left: 25%;
+	width: 25%;
+}
+
+#medium{
+	float: left;
+	left: 50%;
+	width: 25%;
+	position: absolute;
+}
+
+#difficult{
+	float: left;
+	left: 75%;
+	width: 25%;
+	position: absolute;
+}
+
+#nav_indicator{
+	background-color: #F39C12;
+	position: absolute;
+	left: 0%;
+	top: 90%;
+	width: 25%;
+	height: 5px;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+
+.filterContainer{
+	width: 100%;
+	height: 100%;
+	background-color: white;
 }
 
 :focus {outline:none;}

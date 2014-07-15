@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="script.js"></script>
 	</head>
 
-	<body>
+	<body id="mainBody">
 	
 		<div class="leftsideBar">
 
@@ -68,7 +68,7 @@
 			<div id="rightheader">
 				
 				<div id="searchBox" >
-					Search    <input type="text">
+					Search:    <input type="text">
 
 				</div>
 
@@ -78,6 +78,20 @@
 			
 			</div>
 			
+		</div>
+
+		<div class="main">
+
+			<div class="navBar">
+			<div id="nav_indicator"></div>
+				<a href="#"><div class="navBar_item" id="all" name="all">All</div></a>
+				<a href="#"><div class="navBar_item" id="easy" name = "easy">Easy</div></a>
+				<a href="#"><div class="navBar_item" id="medium" name = "medium">Medium</div></a>
+				<a href="#"><div class="navBar_item" id="difficult" name = "difficult">Difficult</div></a>
+			</div>
+
+		<div class="filterContainer"></div>
+
 		</div>
 
 	</body>
