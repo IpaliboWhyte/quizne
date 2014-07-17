@@ -1,9 +1,7 @@
 html, body
 {
     height: 100%;
-    font-family: 'Open Sans', sans-serif;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    font-family: 'Lato', sans-serif;
     background: url("srabi-foods-wallpaper-hd.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -35,25 +33,36 @@ html, body
 	color: white;
 }
 
-#leftheader{
-	position: absolute;
+#leftheader{	
+	text-align: center;
+	position: relative;
 	background-color: #F39C12;
-	width: 240px;
+	width: 20%;
+	min-width:240px;
 	height: 100%;
+}
+
+#leftheaderText{
+	position: relative;
+	font-family: 'PT Sans Narrow', sans-serif;
+	top: 30%;
+	color: #22313F;
+	font-size: 20px;
 }
 
 .leftsideBar{
 	float: left;
 	position: relative;
-	width: 240px;
+	width: 20%;
+	min-width:240px;
 	height: 100%;
+	min-height: 100%;
 	background-color: #34495E;
 }
 
 #leftsidebarContent{
 	position:static;
 	margin:0 auto;
-	background-color: green;
 }
 
 .ratingSection{
@@ -106,6 +115,10 @@ background-color: #22313F;
 
 }
 
+input[type="checkbox"]{ 
+	
+}
+
 #mainBody{
 	opacity: 0;
 }
@@ -115,28 +128,31 @@ background-color: #22313F;
 	padding: 0px;
 	margin: 0px;
 	position: relative;
-	left: 1940px;
-	top: 300px;
-	width:1360px;
-	height: 718px;
+	top: 25%;
+	width:80%;
+	height: 75%;
+	z-index: 1000;
+	float: left;
 }
 
 .navBar{
-	bottom: 500px;
+	bottom: -20%;
 	position: relative;
-	width: 100%;
-	height: 50px;
+	width:100%;
+	height: 10%;
 	background-color: black;
 	opacity: 0.8;
 	color: white;
+	z-index: -1;
 }
 
 .navBar_item{
-	padding-top: 10px;
+	padding-top: 5px;
 	text-align: center;
 	left: 0px;
 	height: 20px;
 	color: white;
+	font-size: 13px;
 }
 
 #all{
@@ -172,7 +188,7 @@ background-color: #22313F;
 	left: 0%;
 	top: 90%;
 	width: 25%;
-	height: 5px;
+	height: 10%;
 }
 
 a{
@@ -180,11 +196,40 @@ a{
 	color: white;
 }
 
+H1{
+	color: #22313F;
+	font-size: 25px;
+}
+
+#mealTypeForm{
+	padding-top: 20px;
+	padding-left: 50px;
+	color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+#checkBox{
+}
+
+.checkBoxText{
+	padding-left: 20px;
+	font-size: 14px;
+	font-family: 'Lato', sans-serif;
+}
+
 
 .filterContainer{
+	position: relative;
 	width: 100%;
-	height: 100%;
+	height: 20%;
 	background-color: white;
 }
+
+.contentContainer{
+	width: 100%;
+	height: 70%;
+	background-color: white;
+}
+
 
 :focus {outline:none;}
