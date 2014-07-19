@@ -86,7 +86,7 @@
 			<div id="rightheader">
 				
 				<div id="searchBox" >
-					<input type="text" placeholder="Search">
+					<input type="text" placeholder="Search" ng-model="searchText">
 
 				</div>
 
@@ -137,7 +137,7 @@
 		</div>
 
 		<div class="contentContainer">
-			<div class="contentItem" ng-repeat='meal in recipes' ng-style="{'background-image':'url({{ meal.url }})'}">
+			<div class="contentItem" ng-repeat='meal in recipes | filter:searchText' ng-style="{'background-image':'url({{ meal.url }})'}">
 				<span id="contentItemHeader">{{ meal.title }}</span>
 				<span id="contentItemLevel">{{ meal.level }}</span>
 
