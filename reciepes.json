@@ -1,0 +1,104 @@
+{
+	"reciepes":
+	[
+	    {
+		  "type": "Breakfast",
+		  "title": "Chili con carne",
+		  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+		  "ratings": 4,
+		  "ingredients": 
+			  [
+			    {
+			      "vegetable": "40ml"
+			    }
+			  ],
+		  "method": 
+			  [
+			    {
+			      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+			    }
+			  ]
+		},
+
+		{
+		  "type": "Main Meal",
+		  "title": "Main Meal",
+		  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+		  "ratings": 4,
+		  "ingredients": 
+		  	[
+			    {
+			      "vegetable": "40ml"
+			    }
+		  	],
+		  "method": 
+		  	[
+
+			    {
+			      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+			    }
+		  	]
+		},
+
+		{
+		  "type": "Dessert",
+		  "title": "dessert",
+		  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+		  "ratings": 4,
+		  "ingredients": 
+		  	[
+			    {
+			      "vegetable": "40ml"
+			    }
+		  	],
+		  "method": 
+		  	[
+
+			    {
+			      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+			    }
+		  	]
+		},
+
+		{
+		  "type": "Side dish/snack",
+		  "title": "",
+		  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+		  "ratings": 4,
+		  "ingredients": 
+		  	[
+			    {
+			      "vegetable": "40ml"
+			    }
+		  	],
+		  "method": 
+		  	[
+
+			    {
+			      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+			    }
+		  	]
+		},
+
+		{
+		  "type": "Beverage",
+		  "title": "Main Meal",
+		  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+		  "ratings": 4,
+		  "ingredients": 
+		  	[
+			    {
+			      "vegetable": "40ml"
+			    }
+		  	],
+		  "method": 
+		  	[
+
+			    {
+			      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+			    }
+		  	]
+		}
+	]
+}
+

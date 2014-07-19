@@ -203,7 +203,7 @@ H1{
 
 #mealTypeForm{
 	padding-top: 20px;
-	padding-left: 50px;
+	padding-left: 20px;
 	color: white;
     font-family: 'PT Sans Narrow', sans-serif;
 }
@@ -221,7 +221,8 @@ H1{
 .filterContainer{
 	position: relative;
 	width: 100%;
-	height: 20%;
+	height: auto;
+	min-height: 20%;
 	background-color: white;
 }
 
@@ -231,5 +232,88 @@ H1{
 	background-color: white;
 }
 
+#filtertag{
+	display: inline-block;
+	background-color: #D2D7D3;
+	position: relative;
+	padding: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	text-align: center;
+	border-radius: 15px;
+	color: #6C7A89;
+}
+
+#filtertag:hover {
+	color: #6C7A89;
+	border-radius: 0px;
+	-webkit-transition: border-radius 0.5s ease-out;
+}
+
+#filtertag:hover #filtertagRemove{
+	display:inline;
+	border-radius: 0px;
+	-webkit-transition: border-radius 0.5s ease-out;
+}
+
+#filtertagRemove{
+	border-style:solid;
+	border-left:1px solid white;
+	border-top: 0px;
+	border-bottom: 0px;
+	padding-left: 5px;
+	display: none;
+	width: 50px;
+	position: relative;
+	opacity: 1;
+	-webkit-transition: display 0.5s ease-out;
+}
+
+#filtertagRemove a{
+	color: #F39C12;
+}
+
+#filtertagRemove:hover{
+	opacity: 1;
+    -webkit-transition: opacity 0.5s ease-out;
+}
+
+#filtertagRemove:hover:after{
+	background-color: black;3
+    -webkit-transition: opacity 0.5s ease-out;
+}
+
+.contentItem{
+	font-size: 12px;
+	color: white;
+	display: inline-block;
+	position: relative;
+	background-color: #F39C12; 
+	width:230px; 
+	height:150px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#contentItemHeader{
+	font-size: 15px;
+	position: absolute;
+	background-color: black;
+	opacity: 0.7;
+	height: 30%;
+	width: 100%;
+}
+
+#contentItemLevel{
+	position: absolute;
+	background-color: #F39C12;
+	border-radius: 3px;
+	opacity: 0.9;
+	width: auto;
+	height: auto;
+	padding: 5px;
+	top: 76%;
+	margin: 5px;
+ }
 
 :focus {outline:none;}

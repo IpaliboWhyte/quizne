@@ -5,14 +5,21 @@ const MAIN_WIDTH = "20%"
 $( document ).ready(function() {
 var phonecatApp = angular.module('phonecatApp', []);
 
-	phonecatApp.controller('PhoneListCtrl', function ($scope) {
-  $scope.reciepes = 
-  [
+angular.module('mealApp', [])
+    .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
+    $scope.recipes = mealFactory.recipes;
+    $scope.selectedMeals = [];
+}])
+    .factory('mealFactory', [function () {
+    return {
+        recipes:[
     {
 	  "type": "Breakfast",
 	  "title": "Chili con carne",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "level":"medium",
+	  "url":"http://31.media.tumblr.com/bc0ea7c5f95701bff499f78b59d23e68/tumblr_mr74z9Lt3O1rs0z5go1_500.jpg",
 	  "ingredients": 
 		  [
 		    {
@@ -29,9 +36,11 @@ var phonecatApp = angular.module('phonecatApp', []);
 
 	{
 	  "type": "Main Meal",
-	  "title": "Main Meal",
+	  "title": "chipotle",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "level":"hot",
+	  "url":"http://s9.favim.com/orig/130818/-_-food-pancake-Favim.com-858765.png",
 	  "ingredients": 
 	  	[
 		    {
@@ -49,9 +58,11 @@ var phonecatApp = angular.module('phonecatApp', []);
 
 	{
 	  "type": "Dessert",
-	  "title": "dessert",
+	  "title": "Caramel fudge",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "level":"medium",
+	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
 	  "ingredients": 
 	  	[
 		    {
@@ -69,9 +80,11 @@ var phonecatApp = angular.module('phonecatApp', []);
 
 	{
 	  "type": "Side dish/snack",
-	  "title": "",
+	  "title": "Mixed veg",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "level":"sweet",
+	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
 	  "ingredients": 
 	  	[
 		    {
@@ -89,9 +102,11 @@ var phonecatApp = angular.module('phonecatApp', []);
 
 	{
 	  "type": "Beverage",
-	  "title": "Main Meal",
+	  "title": "Spicy HamBurger",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "level":"hot",
+	  "url":"http://static.tumblr.com/ae7259a26267c3af3ec4adb39ced6df2/jewuasv/3Z5mlts72/tumblr_static_cute-food-hamburger-photography-yeah-favim.com-438758.jpg",
 	  "ingredients": 
 	  	[
 		    {
@@ -107,14 +122,21 @@ var phonecatApp = angular.module('phonecatApp', []);
 	  	]
 	}
 
-  ];
-});
+  ]
+    };
+}]);
+
 
 	initialiseWithall();
 
+	$( "li.fade" ).hover(function() {
+	  	$( this ).fadeOut( 100 );
+	 	$( this ).fadeIn( 500 );
+	});
+
 	$( "#mainBody" ).animate({opacity: "1"}, 600, function(){
 		$( ".navBar" ).animate({bottom: "10px"}, 300, function(){
-			$( ".navBar" ).animate({bottom: "-1px"}, 200);
+			$( ".navBar" ).animate({bottom: "0px"}, 200);
 		});
 	});
 

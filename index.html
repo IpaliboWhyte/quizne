@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="phonecatApp">
+<html ng-app="mealApp">
 
 	<title>
 	Quizne
@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="angular.min.js"></script>
 	</head>
 
-	<body id="mainBody" ng-controller="PhoneListCtrl">
+	<body id="mainBody" ng-controller="mealController">
 	
 		<div class="leftsideBar">
 
@@ -27,30 +27,33 @@
 			<div id="leftsidebarContent">
 
 				<H1>Meal type</H1>
-
+				
+				<label ng-repeat="meal in recipes">{{meal.type}}
+            		<input id="checkBox" ng-model="meal.selected"  type="checkbox"/>
+       			</label>
+				
+				<!--
 				<form id="mealTypeForm">
-				<input id="checkBox" type="checkbox" name="breakfast" value="Breakfast">
+				<input id="checkBox" type="checkbox" name="Breakfast" value="Breakfast" ng-model="meal.selected">
 				<span class="checkBoxText">Breakfast <span style="padding-left: 70px;"><img src="breakfast.png" height="25px" width="25px"></span></span><br>
-				<input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal">
+				<input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal" ng-model="meal.selected">
 				<span class="checkBoxText">Main Meal <img style="padding-left: 65px; bottom:0px;" src="burger.png" height="25px" width="25px"></span><br>
-				<input id="checkBox" type="checkbox" name="snacks" value="snacks">
+				<input id="checkBox" type="checkbox" name="snacks" value="Side dish/snack" ng-model="meal.selected">
 				<span class="checkBoxText">side dish/snack <img style="padding-left: 35px; bottom:0px;" src="popcorn2.png" height="28px" width="30px"></span><br>
-				<input id="checkBox" type="checkbox" name="condiment" value="condiment">
-				<span class="checkBoxText">condiment/spread <img style="padding-left: 20px; bottom:0px;" src="cheese.png" height="23px" width="25px"></span><br>				
-				<input id="checkBox" type="checkbox" name="starters" value="starters">
+				<input id="checkBox" type="checkbox" name="Beverage" value="Beverage" ng-model="meal.selected">
+				<span class="checkBoxText">Beverage <img style="padding-left: 75px; bottom:0px;" src="cheese.png" height="23px" width="25px"></span><br>				
+				<input id="checkBox" type="checkbox" name="starters" value="starters" ng-model="meal.selected">
 				<span class="checkBoxText">starter/soup <img style="padding-left: 55px; bottom:0px;" src="hot56.png" height="26px" width="28px"></span><br>				
-				<input id="checkBox" type="checkbox" name="dessert" value="Dessert">
+				<input id="checkBox" type="checkbox" name="dessert" value="Dessert" ng-model="meal.selected">
 				<span class="checkBoxText">Dessert <img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px"></span><br>				
 				</form>
-
+				-->
 			</div>
 
 
 			<!--
 
-			<span ng-repeat="reciepe in reciepes">
-				<input id="checkBox" type="checkbox" name="breakfast" value="Breakfast">
-				<span class="checkBoxText">{{reciepe.type}}</span><br>
+
 				<H1>Duration</H1>
 
 					<input type="button" name="slider" value="Slide">
@@ -105,12 +108,40 @@
 				<a href="#"><div class="navBar_item" id="difficult" name = "difficult">Difficult<img style="padding-left:10px;" src="fork27.png" height="25px" width="25px"></div></a>
 			</div>
 
+			<!--
 		<div class="filterContainer">
+
+			<span id="filtertag" name="hello">breakfast
+				<span id="filtertagRemove"> 
+				<a href="google.com">remove</a>
+				</span>
+			</span>
+
+			<span id="filtertag" name="world">MainMeal
+				<span id="filtertagRemove"> 
+				<a href="google.com">remove</a>
+				</span>
+			</span>
+			
+		</div>
+			-->
+
+		<div class="filterContainer">
+
+			<span ng-repeat='meal in recipes' ng-show="meal.selected" id="filtertag" name="hello">{{ meal.type }}
+				<span id="filtertagRemove"> 
+				<a href="google.com">remove</a>
+				</span>
+			</span>
 			
 		</div>
 
 		<div class="contentContainer">
-			
+			<div class="contentItem" ng-repeat='meal in recipes' ng-style="{'background-image':'url({{ meal.url }})'}">
+				<span id="contentItemHeader">{{ meal.title }}</span>
+				<span id="contentItemLevel">{{ meal.level }}</span>
+
+			</div>
 
 		</div>
 
