@@ -1,0 +1,18 @@
+<div class="modal-header">
+
+	<h3 class="modal-title">{{ meal.title }}</h3>
+	
+</div>
+
+<div class="modal-body">
+  <div>{{ meal.url }}</div>
+  <div>{{ meal.method }}</div>
+  <hr />
+  <h4>Ingridients</h4>
+  <ul >
+    <li ng-repeat='ingridient in meal.ingridients' >{{ingridient.name}} : {{ingridient.amount}}</li>
+  </ul>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="$close()">Close</button>
+</div>

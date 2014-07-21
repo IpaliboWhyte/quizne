@@ -16,7 +16,7 @@
 	</head>
 
 	<body id="mainBody" ng-controller="mealController">
-	
+
 		<div class="leftsideBar">
 
 			<br>
@@ -28,26 +28,27 @@
 
 				<H1>Meal type</H1>
 				
+				<!--
 				<label ng-repeat="meal in recipes">{{meal.type}}
             		<input id="checkBox" ng-model="meal.selected"  type="checkbox"/>
        			</label>
+				-->
 				
-				<!--
 				<form id="mealTypeForm">
-				<input id="checkBox" type="checkbox" name="Breakfast" value="Breakfast" ng-model="meal.selected">
+				<input id="checkBox" type="checkbox" name="Breakfast" value="Breakfast" ng-model="meal.breakfast">
 				<span class="checkBoxText">Breakfast <span style="padding-left: 70px;"><img src="breakfast.png" height="25px" width="25px"></span></span><br>
-				<input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal" ng-model="meal.selected">
+				<input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal" ng-model="meal.mainMeal">
 				<span class="checkBoxText">Main Meal <img style="padding-left: 65px; bottom:0px;" src="burger.png" height="25px" width="25px"></span><br>
-				<input id="checkBox" type="checkbox" name="snacks" value="Side dish/snack" ng-model="meal.selected">
+				<input id="checkBox" type="checkbox" name="snacks" value="Side dish/snack" ng-model="meal.snack">
 				<span class="checkBoxText">side dish/snack <img style="padding-left: 35px; bottom:0px;" src="popcorn2.png" height="28px" width="30px"></span><br>
-				<input id="checkBox" type="checkbox" name="Beverage" value="Beverage" ng-model="meal.selected">
+				<input id="checkBox" type="checkbox" name="Beverage" value="Beverage" ng-model="meal.beverage">
 				<span class="checkBoxText">Beverage <img style="padding-left: 75px; bottom:0px;" src="cheese.png" height="23px" width="25px"></span><br>				
-				<input id="checkBox" type="checkbox" name="starters" value="starters" ng-model="meal.selected">
+				<input id="checkBox" type="checkbox" name="starters" value="starters" ng-model="meal.soup">
 				<span class="checkBoxText">starter/soup <img style="padding-left: 55px; bottom:0px;" src="hot56.png" height="26px" width="28px"></span><br>				
-				<input id="checkBox" type="checkbox" name="dessert" value="Dessert" ng-model="meal.selected">
+				<input id="checkBox" type="checkbox" name="dessert" value="Dessert" ng-model="meal.dessert">
 				<span class="checkBoxText">Dessert <img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px"></span><br>				
 				</form>
-				-->
+				
 			</div>
 
 
@@ -98,55 +99,114 @@
 			
 		</div>
 
-		<div class="main">
+			<div class="main">
 
-			<div class="navBar">
-			<div id="nav_indicator"></div>
-				<a href="#"><div class="navBar_item" id="all" name="all">All<img style="padding-left:10px;" src="dining8.png" height="25px" width="25px"></div></a>
-				<a href="#"><div class="navBar_item" id="easy" name = "easy">Easy<img style="padding-left:10px;" src="spoon10.png" height="25px" width="25px"></div></a>
-				<a href="#"><div class="navBar_item" id="medium" name = "medium">Medium<img style="padding-left:10px;" src="kitchen49.png" height="25px" width="25px"></div></a>
-				<a href="#"><div class="navBar_item" id="difficult" name = "difficult">Difficult<img style="padding-left:10px;" src="fork27.png" height="25px" width="25px"></div></a>
+				<div class="navBar">
+				<div id="nav_indicator"></div>
+					<a href="#"><div class="navBar_item" id="all" name="all">All<img style="padding-left:10px;" src="dining8.png" height="25px" width="25px"></div></a>
+					<a href="#"><div class="navBar_item" id="easy" name = "easy">Easy<img style="padding-left:10px;" src="spoon10.png" height="25px" width="25px"></div></a>
+					<a href="#"><div class="navBar_item" id="medium" name = "medium">Medium<img style="padding-left:10px;" src="kitchen49.png" height="25px" width="25px"></div></a>
+					<a href="#"><div class="navBar_item" id="difficult" name = "difficult">Difficult<img style="padding-left:10px;" src="fork27.png" height="25px" width="25px"></div></a>
 			</div>
 
+				<!--
+			<div class="filterContainer">
+
+				<span id="filtertag" name="hello">breakfast
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
+				</span>
+
+				<span id="filtertag" name="world">MainMeal
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
+				</span>
+				
+			</div>
+				-->
+
+			<div class="filterContainer">
 			<!--
-		<div class="filterContainer">
-
-			<span id="filtertag" name="hello">breakfast
-				<span id="filtertagRemove"> 
-				<a href="google.com">remove</a>
+				<span ng-repeat='meal in recipes' ng-show="meal.selected" id="filtertag" name="hello">{{ meal.type }}
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
 				</span>
-			</span>
-
-			<span id="filtertag" name="world">MainMeal
-				<span id="filtertagRemove"> 
-				<a href="google.com">remove</a>
-				</span>
-			</span>
-			
-		</div>
 			-->
-
-		<div class="filterContainer">
-
-			<span ng-repeat='meal in recipes' ng-show="meal.selected" id="filtertag" name="hello">{{ meal.type }}
-				<span id="filtertagRemove"> 
-				<a href="google.com">remove</a>
+				<span ng-show="meal.breakfast" id="filtertag" name="hello">Breakfast
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
 				</span>
-			</span>
-			
-		</div>
 
-		<div class="contentContainer">
-			<div class="contentItem" ng-repeat='meal in recipes | filter:searchText' ng-style="{'background-image':'url({{ meal.url }})'}">
-				<span id="contentItemHeader">{{ meal.title }}</span>
-				<span id="contentItemLevel">{{ meal.level }}</span>
+				<span ng-show="meal.mainMeal" id="filtertag" name="hello">Main Meal
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
+				</span>
+
+				<span ng-show="meal.snack" id="filtertag" name="hello">side dish/snack
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
+				</span>
+
+				<span ng-show="meal.beverage" id="filtertag" name="hello">Beverage
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
+				</span>
+
+				<span ng-show="meal.dessert" id="filtertag" name="hello">Dessert
+					<span id="filtertagRemove"> 
+					<a href="google.com">remove</a>
+					</span>
+				</span>
+				
+			</div>
+
+
+
+			<div class="contentContainer">
+
+				<a href="">
+
+				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in recipes | filter:searchText' ng-style="{'background-image':'url({{ meal.url }})'}">
+					<span id="contentItemHeader">{{ meal.title }}</span>
+					<span id="contentItemLevel">{{ meal.level }}</span>
+				</div>
+
+				</a>
+			</div>
+		</div>
+		
+		<div id="modalBackground" ng-show="showModal"> 
+		<div class="modalContainer">
+
+			<div id="modalHeader"> 
+			</div>
+
+			<div id="modalPictureView">
+				
+			</div>
+
+			<div id="modalBodyContainer">
+				<div id="modalInfoBody"></div>
+				<div id="modalDescriptionBody"></div>
 
 			</div>
 
+			<div id="modalTabbar">
+				<ul id="tabbarList">
+					<li><a href="" style="margin-left:30px; padding:10px; border-radius: 10px; background-color:black;"> Info </a></li>
+					<li><a href=""> Ingredients </a></li>
+					<li><a href=""> Method </a></li>
+					<li><a href=""> Share </a></li>
+				</ul>
+			</div>
 		</div>
-
 		</div>
-
 	</body>
-
 </html>

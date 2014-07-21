@@ -228,9 +228,11 @@ H1{
 
 .contentContainer{
 	width: 100%;
-	height: 70%;
+	height: auto;
+	min-height: 70%;
 	background-color: white;
 }
+
 
 #filtertag{
 	display: inline-block;
@@ -315,5 +317,78 @@ H1{
 	top: 76%;
 	margin: 5px;
  }
+
+#modalBackground{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 2000;
+}
+
+.modalContainer{
+ 	position: absolute;
+ 	background-color: rgba(123, 100, 0, 1);
+ 	left: 20%;
+ 	top: 80px;
+ 	width: 60%;
+ 	height: 80%;
+ 	z-index: 2000;
+ 	overflow: hidden;
+}
+
+#modalHeader{
+	width: 100%;
+	height: 10%;
+	background-color: #D2D7D3; 
+}
+
+#modalPictureView{
+	width: 100%;
+	height: 40%;
+	background-color: black;
+	opacity: 0.8;
+}
+
+#tabbarList li{
+display: inline;
+list-style-type: none;
+padding-right: 20%;
+}
+
+#modalBodyContainer{
+	position: relative;
+	width: 100%;
+	height: 40%;
+	background-color: grey;
+	overflow: hidden;
+}
+
+#modalInfoBody{
+	position: relative;
+	background-color: black;
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+
+#modalDescriptionBody{
+	position: relative;
+	background-color: brown;
+	width: 60%;
+	height: 100%;
+	float: left;
+}
+
+#modalTabbar{
+	width: 100%;
+	height: 10%;
+	background-color: #D2D7D3;
+}
+
+input[type="range"]{
+	margin: 20px;
+	width: 80%;
+}
 
 :focus {outline:none;}

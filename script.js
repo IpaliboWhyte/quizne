@@ -9,6 +9,13 @@ angular.module('mealApp', [])
     .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
     $scope.recipes = mealFactory.recipes;
     $scope.selectedMeals = [];
+
+    $scope.selectMeal = function(meal) {
+    	$scope.butter = "butters";
+  		$scope.selectedMeal = meal;
+ 	 	$scope.showModal = true;
+	};
+
 }])
     .factory('mealFactory', [function () {
     return {
@@ -29,14 +36,77 @@ angular.module('mealApp', [])
 	  "method": 
 		  [
 		    {
-		      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+		      "1": "In a medium sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
+		    }
+		  ]
+	},
+
+	{
+	  "type": "Breakfast",
+	  "title": "Spicy Indomie",
+	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+	  "ratings": 5,
+	  "level":"hot",
+	  "url":"http://38.media.tumblr.com/875b5eeb5b1efa37d2e9d36fbad836d3/tumblr_mzczesVrZD1rimr6yo1_1280.jpg",
+	  "ingredients": 
+		  [
+		    {
+		      "vegetable": "40ml"
+		    }
+		  ],
+	  "method": 
+		  [
+		    {
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
+		    }
+		  ]
+	},
+
+	{
+	  "type": "Breakfast",
+	  "title": "Prawn Vegs",
+	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+	  "ratings": 4,
+	  "level":"medium",
+	  "url":"http://38.media.tumblr.com/23f5902bec9d2f6f600043a7fb594a6b/tumblr_n8ykd5t78n1rzwv55o1_500.png",
+	  "ingredients": 
+		  [
+		    {
+		      "vegetable": "40ml"
+		    }
+		  ],
+	  "method": 
+		  [
+		    {
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 		  ]
 	},
 
 	{
 	  "type": "Main Meal",
-	  "title": "chipotle",
+	  "title": "skewer",
+	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
+	  "ratings": 2,
+	  "level":"hot",
+	  "url":"http://31.media.tumblr.com/tumblr_m1t5wqIm9g1qbih6so1_500.jpg",
+	  "ingredients": 
+		  [
+		    {
+		      "vegetable": "40ml"
+		    }
+		  ],
+	  "method": 
+		  [
+		    {
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
+		    }
+		  ]
+	},
+
+	{
+	  "type": "Main Meal",
+	  "title": "Vegetable bhaji salad",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
 	  "level":"hot",
@@ -51,7 +121,7 @@ angular.module('mealApp', [])
 	  	[
 
 		    {
-		      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 	  	]
 	},
@@ -60,7 +130,7 @@ angular.module('mealApp', [])
 	  "type": "Dessert",
 	  "title": "Caramel fudge",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
+	  "ratings": 1,
 	  "level":"medium",
 	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
 	  "ingredients": 
@@ -73,7 +143,7 @@ angular.module('mealApp', [])
 	  	[
 
 		    {
-		      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 	  	]
 	},
@@ -82,7 +152,7 @@ angular.module('mealApp', [])
 	  "type": "Side dish/snack",
 	  "title": "Mixed veg",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
+	  "ratings": 5,
 	  "level":"sweet",
 	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
 	  "ingredients": 
@@ -95,7 +165,7 @@ angular.module('mealApp', [])
 	  	[
 
 		    {
-		      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 	  	]
 	},
@@ -117,7 +187,7 @@ angular.module('mealApp', [])
 	  	[
 
 		    {
-		      "1": "In a medium sized stock pot, heat the oil over medium heat. Saute onions, chile peppers andgarlic until soft."
+		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 	  	]
 	}
