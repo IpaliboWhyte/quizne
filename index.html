@@ -181,32 +181,72 @@
 				</a>
 			</div>
 		</div>
+<!--ng-show="showModal"--> 
 		
 		<div id="modalBackground" ng-show="showModal"> 
-		<div class="modalContainer">
+		
+		<div class="modalContainer" ng-init="showInfoSection">
 
-			<div id="modalHeader"> 
-			</div>
+				<div id="modalHeader"> 
 
-			<div id="modalPictureView">
+				</div>
+
+			<div id="infoSection" ng-show="showInfoSection">
+
+				<div id="modalPictureView">
+					
+				</div>
+
+				<div id="modalBodyContainer">
+					<div id="modalInfoBody"></div>
+					<div id="modalDescriptionBody"></div>
+				</div>
+
+			</div>	
+
+		<div id="ingredientSection" ng-show="showIngredientSection">
+			
+			<div id="ingredientBody">
 				
-			</div>
-
-			<div id="modalBodyContainer">
-				<div id="modalInfoBody"></div>
-				<div id="modalDescriptionBody"></div>
 
 			</div>
+		</div>
+
+
+		<div id="methodSection" ng-show="showMethodSection">
+			
+
+			<div id="MethodBody">
+				
+
+			</div>
+
+		</div>	
+
+
+		<div id="shareSection" ng-show="showShareSection">
+			
+
+			<div id="ShareBody">
+				
+
+			</div>
+
+		</div>	
+
 
 			<div id="modalTabbar">
 				<ul id="tabbarList">
-					<li><a href="" style="margin-left:30px; padding:10px; border-radius: 10px; background-color:black;"> Info </a></li>
-					<li><a href=""> Ingredients </a></li>
-					<li><a href=""> Method </a></li>
-					<li><a href=""> Share </a></li>
+					<li><a id="infoLink" href="" ng-click='showInfo("#infoLink")'href="" style="margin-left:30px; padding:5px;"> Info </a></li>
+					<li><a id="ingredientsLink" href="" ng-click='showIngredient("#ingredientsLink")'> Ingredients </a></li>
+					<li><a id="methodLink" href="" ng-click='showMethod("#methodLink")'> Method </a></li>
+					<li><a id="shareLink" href="" ng-click='showShare("#shareLink")'> Share </a></li>
 				</ul>
 			</div>
-		</div>
+
+			<div class="forTabbar" id="nav_indicator" style="height: 1%; top:97%; margin-left:35px; width:50px; border-radius:10px;"></div>
+
+			</div>
 		</div>
 	</body>
 </html>

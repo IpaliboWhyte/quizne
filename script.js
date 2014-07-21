@@ -4,6 +4,7 @@ const MAIN_WIDTH = "20%"
 
 $( document ).ready(function() {
 var phonecatApp = angular.module('phonecatApp', []);
+var currentSection = "info";
 
 angular.module('mealApp', [])
     .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
@@ -11,10 +12,56 @@ angular.module('mealApp', [])
     $scope.selectedMeals = [];
 
     $scope.selectMeal = function(meal) {
-    	$scope.butter = "butters";
   		$scope.selectedMeal = meal;
  	 	$scope.showModal = true;
+ 	 	$scope.showInfoSection = true;
 	};
+
+	$scope.showInfo = function(linkName) {
+ 	 	resetAndshow(linkName);
+		changeTabBarIndicatorto(linkName);
+	};
+
+	$scope.showIngredient = function(linkName) {
+		resetAndshow(linkName);
+		changeTabBarIndicatorto(linkName);
+	};
+
+	$scope.showMethod = function(linkName) {
+		resetAndshow(linkName);
+		changeTabBarIndicatorto(linkName);
+	};
+
+	$scope.showShare = function(linkName) {
+		resetAndshow(linkName);
+		changeTabBarIndicatorto(linkName);
+	};
+
+	function resetAndshow(linkName){
+		if(linkName == "#infoLink"){
+			$scope.showInfoSection = true;
+		}else{
+			$scope.showInfoSection = false;
+		}
+
+		if(linkName == "#ingredientsLink"){
+			$scope.showIngredientSection = true;
+		}else{
+			$scope.showIngredientSection = false;
+		}
+
+		if(linkName == "#methodLink"){
+			$scope.showMethodSection = true;
+		}else{
+			$scope.showMethodSection = false;
+		}
+
+		if(linkName == "#shareLink"){
+			$scope.showShareSection = true;
+		}else{
+			$scope.showShareSection = false;
+		}
+	}
 
 }])
     .factory('mealFactory', [function () {
@@ -275,6 +322,17 @@ function restoreOriginalfont(){
 function initialiseWithall(){
 	$('#all').find('a').trigger('click');
 
+}
+
+function changeTabBarIndicatorto(linkName){
+	var position = $(linkName).offset().left - $('.modalContainer').offset().left;
+	var linkwidth = $(linkName).width();
+	position = position - 35;
+
+    $(".forTabbar#nav_indicator").animate({
+    			width: linkwidth,
+			    left: position
+			  }, 500);
 }
 
 
