@@ -15,6 +15,8 @@ angular.module('mealApp', [])
   		$scope.selectedMeal = meal;
  	 	$scope.showModal = true;
  	 	$scope.showInfoSection = true;
+ 	 	$('.modalContainer').css('background-image', 'url(' + $scope.selectedMeal.url + ')');
+ 	 	welcomeModal();
 	};
 
 	$scope.showInfo = function(linkName) {
@@ -36,6 +38,7 @@ angular.module('mealApp', [])
 		resetAndshow(linkName);
 		changeTabBarIndicatorto(linkName);
 	};
+
 
 	function resetAndshow(linkName){
 		if(linkName == "#infoLink"){
@@ -72,6 +75,7 @@ angular.module('mealApp', [])
 	  "title": "Chili con carne",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "duration": 12,
 	  "level":"medium",
 	  "url":"http://31.media.tumblr.com/bc0ea7c5f95701bff499f78b59d23e68/tumblr_mr74z9Lt3O1rs0z5go1_500.jpg",
 	  "ingredients": 
@@ -93,6 +97,7 @@ angular.module('mealApp', [])
 	  "title": "Spicy Indomie",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 5,
+	  "duration": 30,
 	  "level":"hot",
 	  "url":"http://38.media.tumblr.com/875b5eeb5b1efa37d2e9d36fbad836d3/tumblr_mzczesVrZD1rimr6yo1_1280.jpg",
 	  "ingredients": 
@@ -114,6 +119,7 @@ angular.module('mealApp', [])
 	  "title": "Prawn Vegs",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "duration": 25,
 	  "level":"medium",
 	  "url":"http://38.media.tumblr.com/23f5902bec9d2f6f600043a7fb594a6b/tumblr_n8ykd5t78n1rzwv55o1_500.png",
 	  "ingredients": 
@@ -135,6 +141,7 @@ angular.module('mealApp', [])
 	  "title": "skewer",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 2,
+	  "duration": 20,
 	  "level":"hot",
 	  "url":"http://31.media.tumblr.com/tumblr_m1t5wqIm9g1qbih6so1_500.jpg",
 	  "ingredients": 
@@ -156,6 +163,7 @@ angular.module('mealApp', [])
 	  "title": "Vegetable bhaji salad",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "duration": 15,
 	  "level":"hot",
 	  "url":"http://s9.favim.com/orig/130818/-_-food-pancake-Favim.com-858765.png",
 	  "ingredients": 
@@ -178,6 +186,7 @@ angular.module('mealApp', [])
 	  "title": "Caramel fudge",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 1,
+	  "duration": 50,
 	  "level":"medium",
 	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
 	  "ingredients": 
@@ -200,6 +209,7 @@ angular.module('mealApp', [])
 	  "title": "Mixed veg",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 5,
+	  "duration": 5,
 	  "level":"sweet",
 	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
 	  "ingredients": 
@@ -222,6 +232,7 @@ angular.module('mealApp', [])
 	  "title": "Spicy HamBurger",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
 	  "ratings": 4,
+	  "duration": 32,
 	  "level":"hot",
 	  "url":"http://static.tumblr.com/ae7259a26267c3af3ec4adb39ced6df2/jewuasv/3Z5mlts72/tumblr_static_cute-food-hamburger-photography-yeah-favim.com-438758.jpg",
 	  "ingredients": 
@@ -335,4 +346,9 @@ function changeTabBarIndicatorto(linkName){
 			  }, 500);
 }
 
+function welcomeModal(){
+	$('#modalBackground').animate({"opacity": "1"},400, function(){
+		$('.modalContainer').animate({"opacity": "1","top": "10%"},400);
+	});
 
+}

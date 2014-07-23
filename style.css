@@ -322,15 +322,18 @@ H1{
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.6);
 	z-index: 2000;
+	opacity: 0;
 }
 
 .modalContainer{
  	position: absolute;
- 	background-color: rgba(123, 100, 0, 1);
+ /*	background: url("cookiescover.jpg"); */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
  	left: 20%;
- 	top: 80px;
+ 	top: -70%;
  	width: 60%;
  	height: 80%;
  	z-index: 2000;
@@ -341,14 +344,20 @@ H1{
 #modalHeader{
 	width: 100%;
 	height: 10%;
-	background-color: #D2D7D3; 
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	/* background-color: #BDC3C7; */
+	background-color: rgba(189, 195, 199, 0.5);
+	font-weight:bold;
+	font-size: 25px
 }
 
 #modalPictureView{
+	position: relative;
 	width: 100%;
-	height: 40%;
-	background-color: black;
-	opacity: 0.8;
+	height: 50%;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 #tabbarList{
@@ -364,13 +373,12 @@ padding-right: 150px;
 #modalBodyContainer{
 	position: relative;
 	width: 100%;
-	height: 40%;
-	background-color: grey;
+	height: 50%;
 }
 
 #modalInfoBody{
+	background-color: rgba(255, 255, 255, 1);
 	position: relative;
-	background-color: black;
 	width: 40%;
 	height: 100%;
 	float: left;
@@ -378,7 +386,7 @@ padding-right: 150px;
 
 #modalDescriptionBody{
 	position: relative;
-	background-color: brown;
+	background-color: rgba(255, 255, 255, 1);
 	width: 60%;
 	height: 100%;
 	float: left;
@@ -387,7 +395,7 @@ padding-right: 150px;
 #modalTabbar{
 	width: 100%;
 	height: 10%;
-	background-color: #D2D7D3;
+	background-color: #34495E;
 }
 
 #infoSection{
@@ -396,27 +404,35 @@ padding-right: 150px;
 }
 
 #ingredientSection{
-	background-color: red;
+	background-color: #ECF0F1;
 	height: 80%;
 	width:100%;
 }
 
 #ingredientBody{
-	background-color: purple;
+	background-color: #ECF0F1;
 	height: 100%;
 	width:100%;
 }
 
 #methodSection{
-	background-color: red;
+	background-color: #ECF0F1;
 	height: 80%;
 	width:100%;
 }
 
 #shareSection{
-	background-color: green;
+	background-color: #ECF0F1;
 	height: 80%;
 	width:100%;
+}
+
+#MealtagContainer{
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	top: 90%;
 }
 
 input[type="range"]{

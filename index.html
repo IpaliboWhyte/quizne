@@ -185,21 +185,48 @@
 		
 		<div id="modalBackground" ng-show="showModal"> 
 		
-		<div class="modalContainer" ng-init="showInfoSection">
-
+		<div class="modalContainer" ng-style="heroImage">
 				<div id="modalHeader"> 
-
+					<div style="padding-top: 10px;">{{selectedMeal.title}}</div>
 				</div>
 
 			<div id="infoSection" ng-show="showInfoSection">
 
 				<div id="modalPictureView">
-					
+
+					<div id="MealtagContainer">
+						<div style="font-size:13px; color:#F39C12;">
+							<h3 style="color: white; font-size:15px; display: inline-block;">Difficulty:</h3> {{selectedMeal.level}}
+							<h3 style=" margin-left: 15px; color: white; font-size:15px; display: inline-block;">Duration:</h3> {{selectedMeal.duration}}min
+						</div>
+
+					</div>
+
 				</div>
 
 				<div id="modalBodyContainer">
-					<div id="modalInfoBody"></div>
-					<div id="modalDescriptionBody"></div>
+					<div id="modalInfoBody">
+					<div style="color:#BDC3C7; margin-left:10px; font-size:15px;">
+						<h2 style="color:#F39C12;">Nutrition:</h2>
+						<br>
+						Amount Per Serving (549g)<br>
+						Energy (kcal): 589<br>
+						Protein: 53.4g<br>
+						Total Fat: 29.4g<br>
+						Total Carbs: 17.1g<br>
+						Fibres: 1.4g<br>
+						WeightWatchers Pro Points: 14
+					</div>
+
+					<div style="color:white;" >
+						{{selectedMeal.type}}
+					</div>
+					
+					</div>
+					<div id="modalDescriptionBody" style="color:#BDC3C7">
+						<h1 style="color:#F39C12">Description:</h1><br>
+						{{selectedMeal.description}}
+					</div>
 				</div>
 
 			</div>	
@@ -207,8 +234,21 @@
 		<div id="ingredientSection" ng-show="showIngredientSection">
 			
 			<div id="ingredientBody">
-				
+				<div style="color:#BDC3C7; text-align:center; font-size:19px; text-weight:bold; padding-top:20px;">
+				 1½ kg shrimp, large, whole <br><br>
 
+				 1 can(s) tomatoes, chopped <br><br>
+
+				 4 clove(s) garlic, finely diced <br><br>
+
+				 200 ml white wine <br><br>
+
+				 50 g breadcrumbs <br><br>
+
+				 100 ml olive oil <br><br>
+
+				 1 bunch(es) parsley, chopped
+				</div>
 			</div>
 		</div>
 
