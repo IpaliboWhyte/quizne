@@ -10,6 +10,7 @@ angular.module('mealApp', [])
     .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
     $scope.recipes = mealFactory.recipes;
     $scope.selectedMeals = [];
+    $scope.text = '';
 
     $scope.selectMeal = function(meal) {
   		$scope.selectedMeal = meal;
@@ -18,6 +19,13 @@ angular.module('mealApp', [])
  	 	$('.modalContainer').css('background-image', 'url(' + $scope.selectedMeal.url + ')');
  	 	welcomeModal();
 	};
+
+	$scope.dissmisModalView = function(linkName){
+		dissmisModal();
+		$scope.showModal = false;
+		resetAndshow(linkName);
+
+	}
 
 	$scope.showInfo = function(linkName) {
  	 	resetAndshow(linkName);
@@ -234,7 +242,7 @@ angular.module('mealApp', [])
 	  "ratings": 4,
 	  "duration": 32,
 	  "level":"hot",
-	  "url":"http://static.tumblr.com/ae7259a26267c3af3ec4adb39ced6df2/jewuasv/3Z5mlts72/tumblr_static_cute-food-hamburger-photography-yeah-favim.com-438758.jpg",
+	  "url":"http://37.media.tumblr.com/51bedc9e7334de555c1b00dd3ed8cf22/tumblr_mo9e0eI0fa1riu320o1_500.jpg",
 	  "ingredients": 
 	  	[
 		    {
@@ -253,7 +261,6 @@ angular.module('mealApp', [])
   ]
     };
 }]);
-
 
 	initialiseWithall();
 
@@ -348,7 +355,22 @@ function changeTabBarIndicatorto(linkName){
 
 function welcomeModal(){
 	$('#modalBackground').animate({"opacity": "1"},400, function(){
-		$('.modalContainer').animate({"opacity": "1","top": "10%"},400);
+		$('.modalContainer').animate({"opacity": "1","top": "10%"},400,function(){
+				$("#closeimg").animate({
+	            width: "30px",//HERE
+	            height: "30px"
+	        },300);
+		});
 	});
+}
 
+function dissmisModal(){
+		$('.modalContainer').animate({"opacity": "0","top": "-70%"},400, function(){
+			$('#modalBackground').animate({"opacity": "0"},400)
+		});
+
+		$("#closeimg").css({
+	            width: "0px",//HERE
+	            height: "0px"
+	        });
 }

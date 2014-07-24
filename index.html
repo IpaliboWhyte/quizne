@@ -28,58 +28,67 @@
 
 				<H1>Meal type</H1>
 				
-				<!--
-				<label ng-repeat="meal in recipes">{{meal.type}}
-            		<input id="checkBox" ng-model="meal.selected"  type="checkbox"/>
-       			</label>
-				-->
-				
 				<form id="mealTypeForm">
 				<input id="checkBox" type="checkbox" name="Breakfast" value="Breakfast" ng-model="meal.breakfast">
-				<span class="checkBoxText">Breakfast <span style="padding-left: 70px;"><img src="breakfast.png" height="25px" width="25px"></span></span><br>
+				<span class="checkBoxText">Breakfast ({{(recipes|filter:{type:"breakfast"}).length}})<span style="padding-left: 70px;"><img src="breakfast.png" height="25px" width="25px"></span></span><br>
 				<input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal" ng-model="meal.mainMeal">
-				<span class="checkBoxText">Main Meal <img style="padding-left: 65px; bottom:0px;" src="burger.png" height="25px" width="25px"></span><br>
+				<span class="checkBoxText">Main Meal ({{(recipes|filter:{type:"Main Meal"}).length}})<img style="padding-left: 65px; bottom:0px;" src="burger.png" height="25px" width="25px"></span><br>
 				<input id="checkBox" type="checkbox" name="snacks" value="Side dish/snack" ng-model="meal.snack">
-				<span class="checkBoxText">side dish/snack <img style="padding-left: 35px; bottom:0px;" src="popcorn2.png" height="28px" width="30px"></span><br>
+				<span class="checkBoxText">side dish/snack ({{(recipes|filter:{type:"Side dish/snack"}).length}})<img style="padding-left: 35px; bottom:0px;" src="popcorn2.png" height="28px" width="30px"></span><br>
 				<input id="checkBox" type="checkbox" name="Beverage" value="Beverage" ng-model="meal.beverage">
-				<span class="checkBoxText">Beverage <img style="padding-left: 75px; bottom:0px;" src="cheese.png" height="23px" width="25px"></span><br>				
+				<span class="checkBoxText">Beverage ({{(recipes|filter:{type:"Beverage"}).length}})<img style="padding-left: 75px; bottom:0px;" src="cheese.png" height="23px" width="25px"></span><br>				
 				<input id="checkBox" type="checkbox" name="starters" value="starters" ng-model="meal.soup">
-				<span class="checkBoxText">starter/soup <img style="padding-left: 55px; bottom:0px;" src="hot56.png" height="26px" width="28px"></span><br>				
+				<span class="checkBoxText">starter/soup ({{(recipes|filter:{type:"starters"}).length}})<img style="padding-left: 55px; bottom:0px;" src="hot56.png" height="26px" width="28px"></span><br>				
 				<input id="checkBox" type="checkbox" name="dessert" value="Dessert" ng-model="meal.dessert">
-				<span class="checkBoxText">Dessert <img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px"></span><br>				
+				<span class="checkBoxText">Dessert ({{(recipes|filter:{type:"dessert"}).length}})<img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px "></span><br>				
 				</form>
-				
+
+
+				<H1 style="margin-top:20px;">Duration</H1>
+				<div class="durationContainer">
+					<div id="durationOption">
+						<input style="background-color:#22313F; color: white;" ng-click="showme=false" type="button" value="Slider" >
+					</div>
+
+					<div id="durationOption">
+						<input style="background-color:#22313F; color: white;" ng-click="showme=true" type="button" value="By value">
+					</div>
+
+					<div ng-hide="showme">
+					<div style="text-align:center; color:#22313F">{{duration}}min</div>
+						<input ng-model="duration" type="range" min="1" max="50">
+					</div>
+
+						<div ng-show="showme" style="margin-left:5%; text-align:center;">
+							<span style="color: #22313F; font-weight:bold; text-align:center; font-size:13px;"> Enter value: </span>
+							<br>
+							<input ng-model="duration" placeholder="minutes" style="border-radius: 5px; margin:10px;" type="text">
+						</div>
+				</div>
+
+				<h1 style="margin-top:20px; margin-bottom:10px;">Ingredient</h1>
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="butter">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="carrots">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="cream">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="eggs">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="flour">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="garlic">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="milk">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="onions">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="vegetable">
+
+				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="stock">
+
 			</div>
-
-
-			<!--
-
-
-				<H1>Duration</H1>
-
-					<input type="button" name="slider" value="Slide">
-					<input type="button" name="slider" value="Value">
-				</form>
-
-				<div class="ratingSection">
-					<H1>Rating</H1>
-
-				</div>
-
-				<div class="ingredientSection">
-					<H1>Ingredient</H1>
-				</div>
-
-				<div class="readyinSection">
-					<H1>Ready In</H1>
-				</div>
-
-				<div class="tagsSection">
-					<H1>Tags</H1>
-				</div>
-			
-
-			-->
 	
 		</div>
 		<div class="headerContainer">
@@ -87,8 +96,7 @@
 			<div id="rightheader">
 				
 				<div id="searchBox" >
-					<input type="text" placeholder="Search" ng-model="searchText">
-
+					<input type="search" placeholder="Search" ng-model="searchText">
 				</div>
 
 			</div>
@@ -104,7 +112,7 @@
 				<div class="navBar">
 				<div id="nav_indicator"></div>
 					<a href="#"><div class="navBar_item" id="all" name="all">All<img style="padding-left:10px;" src="dining8.png" height="25px" width="25px"></div></a>
-					<a href="#"><div class="navBar_item" id="easy" name = "easy">Easy<img style="padding-left:10px;" src="spoon10.png" height="25px" width="25px"></div></a>
+					<a href="#" ng-model="difficulty" value="medium"><div class="navBar_item" id="easy" name = "easy">Easy<img style="padding-left:10px;" src="spoon10.png" height="25px" width="25px" ></div></a>
 					<a href="#"><div class="navBar_item" id="medium" name = "medium">Medium<img style="padding-left:10px;" src="kitchen49.png" height="25px" width="25px"></div></a>
 					<a href="#"><div class="navBar_item" id="difficult" name = "difficult">Difficult<img style="padding-left:10px;" src="fork27.png" height="25px" width="25px"></div></a>
 			</div>
@@ -173,7 +181,7 @@
 
 				<a href="">
 
-				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in recipes | filter:searchText' ng-style="{'background-image':'url({{ meal.url }})'}">
+				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in recipes | filter:searchText | filter:duration' ng-style="{'background-image':'url({{ meal.url }})'}">
 					<span id="contentItemHeader">{{ meal.title }}</span>
 					<span id="contentItemLevel">{{ meal.level }}</span>
 				</div>
@@ -183,9 +191,11 @@
 		</div>
 <!--ng-show="showModal"--> 
 		
-		<div id="modalBackground" ng-show="showModal"> 
-		
-		<div class="modalContainer" ng-style="heroImage">
+	<div id="modalBackground" ng-show="showModal">
+	<div id="closeModal" ng-click="dissmisModalView(close)">
+		<a href=""><img id="closeimg" src="close.png" height="0" width="0" ></a>
+	</div>
+		<div class="modalContainer" ng-style="{'background-image':'url({{selectedMeal.url}})'}">
 				<div id="modalHeader"> 
 					<div style="padding-top: 10px;">{{selectedMeal.title}}</div>
 				</div>
@@ -217,10 +227,6 @@
 						Fibres: 1.4g<br>
 						WeightWatchers Pro Points: 14
 					</div>
-
-					<div style="color:white;" >
-						{{selectedMeal.type}}
-					</div>
 					
 					</div>
 					<div id="modalDescriptionBody" style="color:#BDC3C7">
@@ -231,48 +237,48 @@
 
 			</div>	
 
-		<div id="ingredientSection" ng-show="showIngredientSection">
-			
-			<div id="ingredientBody">
-				<div style="color:#BDC3C7; text-align:center; font-size:19px; text-weight:bold; padding-top:20px;">
-				 1½ kg shrimp, large, whole <br><br>
+			<div id="ingredientSection" ng-show="showIngredientSection">
+				
+				<div id="ingredientBody">
+					<div style="color:#BDC3C7; text-align:center; font-size:19px; text-weight:bold; padding-top:20px;">
+					 1½ kg shrimp, large, whole <br><br>
 
-				 1 can(s) tomatoes, chopped <br><br>
+					 1 can(s) tomatoes, chopped <br><br>
 
-				 4 clove(s) garlic, finely diced <br><br>
+					 4 clove(s) garlic, finely diced <br><br>
 
-				 200 ml white wine <br><br>
+					 200 ml white wine <br><br>
 
-				 50 g breadcrumbs <br><br>
+					 50 g breadcrumbs <br><br>
 
-				 100 ml olive oil <br><br>
+					 100 ml olive oil <br><br>
 
-				 1 bunch(es) parsley, chopped
+					 1 bunch(es) parsley, chopped
+					</div>
 				</div>
 			</div>
-		</div>
 
 
-		<div id="methodSection" ng-show="showMethodSection">
-			
-
-			<div id="MethodBody">
+			<div id="methodSection" ng-show="showMethodSection">
 				
 
-			</div>
+				<div id="MethodBody">
+					
 
-		</div>	
+				</div>
+
+			</div>	
 
 
-		<div id="shareSection" ng-show="showShareSection">
-			
-
-			<div id="ShareBody">
+			<div id="shareSection" ng-show="showShareSection">
 				
 
-			</div>
+				<div id="ShareBody">
+					
 
-		</div>	
+				</div>
+
+			</div>	
 
 
 			<div id="modalTabbar">
@@ -286,7 +292,7 @@
 
 			<div class="forTabbar" id="nav_indicator" style="height: 1%; top:97%; margin-left:35px; width:50px; border-radius:10px;"></div>
 
-			</div>
 		</div>
+	</div>
 	</body>
 </html>
