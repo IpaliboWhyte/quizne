@@ -6,6 +6,7 @@
 		</title>
 
 	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
@@ -28,7 +29,20 @@
 
 				<H1>Meal type</H1>
 				
-				<form id="mealTypeForm">
+				<form id="mealTypeForm" style="color: #ECF0F1">
+
+				<select>
+					  <option value="" disabled selected>Choose...</option>
+					  <option value="Breakfast">Breakfast</option>
+					  <option value="mainMeal">Main Meal</option>
+					  <option value="snacks">side dish/snack</option>
+					  <option value="Beverage">Beverage</option>
+					  <option value="starters">starter/soup</option>
+					  <option value="desserts">desserts</option>
+				</select>
+
+				<!--
+
 				<input id="checkBox" type="checkbox" name="Breakfast" value="Breakfast" ng-model="meal.breakfast">
 				<span class="checkBoxText">Breakfast ({{(recipes|filter:{type:"breakfast"}).length}})<span style="padding-left: 70px;"><img src="breakfast.png" height="25px" width="25px"></span></span><br>
 				<input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal" ng-model="meal.mainMeal">
@@ -40,53 +54,103 @@
 				<input id="checkBox" type="checkbox" name="starters" value="starters" ng-model="meal.soup">
 				<span class="checkBoxText">starter/soup ({{(recipes|filter:{type:"starters"}).length}})<img style="padding-left: 55px; bottom:0px;" src="hot56.png" height="26px" width="28px"></span><br>				
 				<input id="checkBox" type="checkbox" name="dessert" value="Dessert" ng-model="meal.dessert">
-				<span class="checkBoxText">Dessert ({{(recipes|filter:{type:"dessert"}).length}})<img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px "></span><br>				
+				<span class="checkBoxText">Dessert ({{(recipes|filter:{type:"dessert"}).length}})<img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px "></span><br>		
+				-->
+
 				</form>
 
 
 				<H1 style="margin-top:20px;">Duration</H1>
 				<div class="durationContainer">
 					<div id="durationOption">
-						<input style="background-color:#22313F; color: white;" ng-click="showme=false" type="button" value="Slider" >
+						<input style="background-color:#F39C12; color: #ECF0F1;" ng-click="showme=false" type="button" value="Slider" >
 					</div>
 
 					<div id="durationOption">
-						<input style="background-color:#22313F; color: white;" ng-click="showme=true" type="button" value="By value">
+						<input style="background-color:#22313F; color: #ECF0F1;" ng-click="showme=true" type="button" value="value">
 					</div>
 
 					<div ng-hide="showme">
+
 					<div style="text-align:center; color:#22313F">{{duration}}min</div>
 						<input ng-model="duration" type="range" min="1" max="50">
 					</div>
 
 						<div ng-show="showme" style="margin-left:5%; text-align:center;">
-							<span style="color: #22313F; font-weight:bold; text-align:center; font-size:13px;"> Enter value: </span>
-							<br>
-							<input ng-model="duration" placeholder="minutes" style="border-radius: 5px; margin:10px;" type="text">
+							<span style="color: #22313F; font-weight:bold; text-align:center; font-size:13px; "> Enter value: </span>
+							<input ng-model="duration" placeholder="minutes" style="color: #BFBFBF; border-radius: 5px; margin:10px;" type="text">
 						</div>
 				</div>
 
 				<h1 style="margin-top:20px; margin-bottom:10px;">Ingredient</h1>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="butter">
+				<div style="color:#6C7A89">
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="carrots">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='butter' value='butter' id="butter"/>
+						<label for="butter" style="margin-right:3px;"></label>butter
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="cream">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='carrots' value='carrots' id="carrots"/>
+						<label for="carrots" style="margin-right:3px;"></label>carrots
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="eggs">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">	
+						<input type='checkbox' name='cream' value='cream' id="cream"/>
+						<label for="cream" style="margin-right:3px;"></label>cream
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="flour">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='eggs' value='eggs' id="eggs"/>
+						<label for="eggs" style="margin-right:3px;"></label>eggs
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="garlic">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='flour' value='flour' id="flour"/>
+						<label for="flour" style="margin-right:3px;"></label>flour
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="milk">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='garlic' value='garlic' id="garlic"/>
+						<label for="garlic" style="margin-right:3px;"></label>garlic
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="onions">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='pepper' value='pepper' id="pepper"/>
+						<label for="pepper" style="margin-right:3px;"></label>pepper
+					</div>
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="vegetable">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+						<input type='checkbox' name='scotch' value='scotch' id="scotch"/>
+						<label for="scotch" style="margin-right:3px;"></label>scotch
+					</div>					
 
-				<input style="background-color:#22313F; width: auto; height: auto; display:inline-block; margin:5px; padding:5px; color:white; font-size: 12px; border-radius:5px;" type="button" value="stock">
+
+				<!--
+					<select>
+					  <option value="" disabled selected>Choose...</option>
+					  <option value="butter">butter</option>
+					  <option value="carrots">carrots</option>
+					  <option value="cream">cream</option>
+					  <option value="eggs">eggs</option>
+					  <option value="flour">flour</option>
+					  <option value="garlic">garlic</option>
+					  <option value="milk">oil</option>
+					  <option value="audi">olive oil</option>
+					</select>
+				-->
+				</div>
+
+				<h1 style="margin-top:20px; margin-bottom:10px;">Rating</h1>
+
+					<fieldset class="rating">
+					    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+					    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+					    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+					    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+					    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+					</fieldset>
 
 			</div>
 	
@@ -106,7 +170,7 @@
 			</div>
 			
 		</div>
-
+		<div class="mainContainer">
 			<div class="main">
 
 				<div class="navBar">
@@ -117,32 +181,8 @@
 					<a href="#"><div class="navBar_item" id="difficult" name = "difficult">Difficult<img style="padding-left:10px;" src="fork27.png" height="25px" width="25px"></div></a>
 			</div>
 
-				<!--
 			<div class="filterContainer">
 
-				<span id="filtertag" name="hello">breakfast
-					<span id="filtertagRemove"> 
-					<a href="google.com">remove</a>
-					</span>
-				</span>
-
-				<span id="filtertag" name="world">MainMeal
-					<span id="filtertagRemove"> 
-					<a href="google.com">remove</a>
-					</span>
-				</span>
-				
-			</div>
-				-->
-
-			<div class="filterContainer">
-			<!--
-				<span ng-repeat='meal in recipes' ng-show="meal.selected" id="filtertag" name="hello">{{ meal.type }}
-					<span id="filtertagRemove"> 
-					<a href="google.com">remove</a>
-					</span>
-				</span>
-			-->
 				<span ng-show="meal.breakfast" id="filtertag" name="hello">Breakfast
 					<span id="filtertagRemove"> 
 					<a href="google.com">remove</a>
@@ -176,19 +216,20 @@
 			</div>
 
 
-
 			<div class="contentContainer">
 
 				<a href="">
-
-				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in recipes | filter:searchText | filter:duration' ng-style="{'background-image':'url({{ meal.url }})'}">
+				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in recipes | filter:searchText | filter:duration | limitTo : paginationLimit()' ng-style="{'background-image':'url({{ meal.url }})'}">
 					<span id="contentItemHeader">{{ meal.title }}</span>
 					<span id="contentItemLevel">{{ meal.level }}</span>
 				</div>
 
 				</a>
+
+			<div ng-show="hasMoreItemsToShow()" style="text-align: center"> <input ng-click="showMoreItems()" id="showMore" type="button" value="show more"></div>
 			</div>
 		</div>
+	</div>
 <!--ng-show="showModal"--> 
 		
 	<div id="modalBackground" ng-show="showModal">
