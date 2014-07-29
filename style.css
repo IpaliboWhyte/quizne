@@ -141,16 +141,16 @@ input[type=checkbox] + label
 cursor:pointer;
 border-radius: 10px;
 background: #34495E;
-height: 12px;
-width: 12px;
+height: 10px;
+width: 10px;
 display:inline-block;
 padding: 0 0 0 0px;
 }
 input[type=checkbox]:checked + label
 {
 background: #F39C12;
-height: 12px;
-width: 12px;
+height: 10px;
+width: 10px;
 display:inline-block;
 padding: 0 0 0 0px;
 }
@@ -535,6 +535,18 @@ background-color: #F39C12;
 opacity: 0.8;
 }
 
+#facetMenu{
+	margin-left:21%; 
+	top:68px; 
+	position:absolute; 
+	width:70%; 
+	height:40%; 
+	background-color:rgba(52, 73, 94, 1);
+	z-index:8000; 
+	padding:25px;
+	border-radius: 10px;
+}
+
 input[type="range"]{
 	margin: 10px;
 	width: 90%;
@@ -571,7 +583,7 @@ fieldset{
     overflow:hidden;
     white-space:nowrap;
     cursor:pointer;
-    font-size:150%;
+    font-size:120%;
     line-height:1.2;
     color:#22313F;
 }
@@ -581,7 +593,7 @@ fieldset{
 }
 
 .rating > input:checked ~ label {
-    color: #F39C12;
+    color: #F9BF3B;
 }
 
 .rating:not(:checked) > label:hover,

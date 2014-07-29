@@ -4,7 +4,6 @@ const MAIN_WIDTH = "20%"
 var original = $('.navBar');
 
 $( document ).ready(function() {
-var phonecatApp = angular.module('phonecatApp', []);
 var currentSection = "info";
 
 angular.module('mealApp', [])
@@ -12,10 +11,10 @@ angular.module('mealApp', [])
     $scope.recipes = mealFactory.recipes;
     $scope.selectedMeals = [];
     $scope.text = '';
-
+    $scope.openMenu = false;
     var pagesShown = 1;
 	var pageSize = 8;
-		    
+	    
     $scope.paginationLimit = function(data) {
         return pageSize * pagesShown;
     };
@@ -63,6 +62,77 @@ angular.module('mealApp', [])
 		changeTabBarIndicatorto(linkName);
 	};
 
+	$scope.Userconfig = 
+	[
+		{
+			"radio":[
+				{
+					"value":"Bike",
+					"name" :"vehicle",
+					"color" :"blue"
+				},
+
+				{
+					"value":"Car",
+					"name" :"vehicle",
+					"color":"red"
+				},
+
+				{
+					"value":"Bus",
+					"name" :"vehicle",
+					"color" :"blue"
+				},
+
+				{
+					"value":"Train",
+					"name" :"vehicle",
+					"color":"red"
+				}
+			],
+
+			"text":[
+				{
+					"value":"old Roger",
+					"name" :"hello",
+					"style" :"color:white;"
+				}
+			]
+
+		},
+	]
+
+	$scope.Usersettings = ["text","radio"];
+
+
+	/*
+	[
+		{
+			"data":
+			[
+				{
+					"divtype": "input",
+					"type":"radio",
+					"style":"margin:5px; color:green;",
+					"text":"Breakfast",
+					"divStyle":"color:white"
+				},
+
+				{
+					"divtype": "input",
+					"type":"radio",
+					"style":"margin:5px; color:green;",
+					"text":"Breakfast",
+					"divStyle":"color:white"
+				}
+			]
+		},
+
+		{
+			"divtype": "nolove",
+		}
+	]
+*/
 
 	function resetAndshow(linkName){
 		if(linkName == "#infoLink"){

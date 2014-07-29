@@ -86,44 +86,44 @@
 
 				<div style="color:#6C7A89">
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='butter' value='butter' id="butter"/>
-						<label for="butter" style="margin-right:3px;"></label>butter
+						<label for="butter" style="margin-right:5px;"></label>butter
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='carrots' value='carrots' id="carrots"/>
-						<label for="carrots" style="margin-right:3px;"></label>carrots
+						<label for="carrots" style="margin-right:5px;"></label>carrots
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">	
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">	
 						<input type='checkbox' name='cream' value='cream' id="cream"/>
-						<label for="cream" style="margin-right:3px;"></label>cream
+						<label for="cream" style="margin-right:5px;"></label>cream
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='eggs' value='eggs' id="eggs"/>
-						<label for="eggs" style="margin-right:3px;"></label>eggs
+						<label for="eggs" style="margin-right:5px;"></label>eggs
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='flour' value='flour' id="flour"/>
-						<label for="flour" style="margin-right:3px;"></label>flour
+						<label for="flour" style="margin-right:5px;"></label>flour
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='garlic' value='garlic' id="garlic"/>
-						<label for="garlic" style="margin-right:3px;"></label>garlic
+						<label for="garlic" style="margin-right:5px;"></label>garlic
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='pepper' value='pepper' id="pepper"/>
-						<label for="pepper" style="margin-right:3px;"></label>pepper
+						<label for="pepper" style="margin-right:5px;"></label>pepper
 					</div>
 
-					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:4px; border-radius:5px;">
+					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
 						<input type='checkbox' name='scotch' value='scotch' id="scotch"/>
-						<label for="scotch" style="margin-right:3px;"></label>scotch
+						<label for="scotch" style="margin-right:5px;"></label>scotch
 					</div>					
 
 
@@ -158,8 +158,11 @@
 		<div class="headerContainer">
 
 			<div id="rightheader">
+				<div ng-click="openMenu =! openMenu" style="display:inline; margin-left:22%; top:35%; position:absolute;">
+					<img  src="menu10.png" height="15px" width="20px;">
+				</div>
 				
-				<div id="searchBox" >
+				<div id="searchBox">
 					<input type="search" placeholder="Search" ng-model="searchText">
 				</div>
 
@@ -168,8 +171,106 @@
 			<div id="leftheader">
 				<span id="leftheaderText">Quizne</span>
 			</div>
-			
+
 		</div>
+
+		<div ng-show="openMenu" id="facetMenu" style='color:#6C7A89'>
+
+			<span ng-repeat='config in Usersettings'>
+
+				<div ng-if="config == 'text'" style="float:left; padding: 20px;">
+					<h1 style="color:#EEEEEE; font-size:18px;">Text</h1> 
+
+					<span>
+						<form>
+							<div>
+								<input style="color:white" value="hello" name="texter" type="text" id="texter">
+							</div>
+						</form>
+					</span>
+
+				</div>
+
+				<div ng-if="config == 'radio'" style="float:left; padding: 20px;">
+					<h1 style="color:#EEEEEE; font-size:18px;">Radio</h1>
+
+					<span>
+						<form>
+							<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+								<input value="cat" name="animal" type="checkbox" id="cat">
+								<label for="cat" style="margin-right:5px;"></label>cat
+							</div>
+
+							<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+								<input value="dog" name="animal" type="checkbox" id="dog">
+								<label for="dog" style="margin-right:5px;"></label>dog
+							</div>
+
+							<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+								<input value="bird" name="animal" type="checkbox" id="bird">
+								<label for="bird" style="margin-right:5px;"></label>bird
+							</div>
+
+							<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+								<input value="steve" name="animal" type="checkbox" id="steve">
+								<label for="steve" style="margin-right:5px;"></label>steve
+							</div>
+
+							<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+								<input value="tos" name="animal" type="checkbox" id="tos">
+								<label for="tos" style="margin-right:5px;"></label>tos
+							</div>
+
+							<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+								<input value="chinedu" name="animal" type="checkbox" id="chinedu">
+								<label for="chinedu" style="margin-right:5px;"></label>chinedu
+							</div>
+
+						</form>
+					</span>
+
+				</div>
+			</span>
+		
+		<!--
+			<div ng-repeat='config in Userconfig' style='color:#6C7A89'>
+
+			</div>
+		-->
+
+			<!--
+			<span ng-if="Usersettings[0] == 'radio'">
+				<form style="float:left; padding: 20px;">
+					<h1 style="color:#22A7F0">Radio</h1>
+					<div ng-repeat='data in config.radio' style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+
+						<input value="{{data.value}}" name="{{data.name}}" type="checkbox" id="{{data.value}}">
+						<label for="{{data.value}}" style="margin-right:5px;"></label>{{data.value}}
+					</div>
+				</form>
+			</span>
+
+				<span ng-if="Usersettings[0] == 'text'">
+					<form style="float:left; padding: 20px;">
+						<h1 style="color:#22A7F0">Text</h1> 
+						<div ng-repeat='data in config.text'>
+							<input style="{{data.style}}" value="{{data.value}}" name="{{data.name}}" type="text" id="{{data.value}}">
+						</div>
+					</form>
+				</span>
+
+				-->
+			
+
+			<div ng-if="config == 'hoot' ">
+		    //differnt template with hoot data
+			</div>	
+
+		</div>
+
+
+
+
 		<div class="mainContainer">
 			<div class="main">
 
