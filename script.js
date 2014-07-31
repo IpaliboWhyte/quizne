@@ -102,7 +102,7 @@ angular.module('mealApp', [])
 		},
 	]
 
-	$scope.Usersettings = ["text","radio"];
+	$scope.Usersettings = ["radio","text"];
 
 
 	/*
@@ -159,7 +159,6 @@ angular.module('mealApp', [])
 			$scope.showShareSection = false;
 		}
 	}
-
 }])
     .factory('mealFactory', [function () {
     return {
@@ -882,7 +881,7 @@ angular.module('mealApp', [])
 		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 	  	]
-	}
+	},
 
   ]
     };

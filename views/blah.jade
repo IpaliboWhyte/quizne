@@ -1,0 +1,291 @@
+doctype html
+html(ng-app='mealApp')
+  head
+    meta(http-equiv='Content-Type', content='text/html;charset=UTF-8')
+    link(href='/stylesheets/style.css',rel='stylesheet')
+    link(href='http://fonts.googleapis.com/css?family=Lato', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700', rel='stylesheet', type='text/css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/javascripts/script.js')
+    script(src='/javascripts/angular.min.js')
+body#mainBody(ng-controller='mealController')
+  block content
+    .leftsideBar
+      br
+      br
+      br
+      br
+      #leftsidebarContent
+        h1(style='font-size: 20px; color: #22313F;') Meal type
+        form#mealTypeForm(style='color: #ECF0F1;')
+          select
+            option(value='', disabled='disabled', selected='selected') Choose...
+            option(value='Breakfast') Breakfast
+            option(value='mainMeal') Main Meal
+            option(value='snacks') side dish/snack
+            option(value='Beverage') Beverage
+            option(value='starters') starter/soup
+            option(value='desserts') desserts
+          //
+                            <input id="checkBox" type="checkbox" name="Breakfast" value="Breakfast" ng-model="meal.breakfast">
+                            <span class="checkBoxText">Breakfast ({{(recipes|filter:{type:"breakfast"}).length}})<span style="padding-left: 70px;"><img src="breakfast.png" height="25px" width="25px"></span></span><br>
+                            <input id="checkBox" type="checkbox" name="mainmeal" value="Main Meal" ng-model="meal.mainMeal">
+                            <span class="checkBoxText">Main Meal ({{(recipes|filter:{type:"Main Meal"}).length}})<img style="padding-left: 65px; bottom:0px;" src="burger.png" height="25px" width="25px"></span><br>
+                            <input id="checkBox" type="checkbox" name="snacks" value="Side dish/snack" ng-model="meal.snack">
+                            <span class="checkBoxText">side dish/snack ({{(recipes|filter:{type:"Side dish/snack"}).length}})<img style="padding-left: 35px; bottom:0px;" src="popcorn2.png" height="28px" width="30px"></span><br>
+                            <input id="checkBox" type="checkbox" name="Beverage" value="Beverage" ng-model="meal.beverage">
+                            <span class="checkBoxText">Beverage ({{(recipes|filter:{type:"Beverage"}).length}})<img style="padding-left: 75px; bottom:0px;" src="cheese.png" height="23px" width="25px"></span><br>             
+                            <input id="checkBox" type="checkbox" name="starters" value="starters" ng-model="meal.soup">
+                            <span class="checkBoxText">starter/soup ({{(recipes|filter:{type:"starters"}).length}})<img style="padding-left: 55px; bottom:0px;" src="hot56.png" height="26px" width="28px"></span><br>              
+                            <input id="checkBox" type="checkbox" name="dessert" value="Dessert" ng-model="meal.dessert">
+                            <span class="checkBoxText">Dessert ({{(recipes|filter:{type:"dessert"}).length}})<img style="padding-left: 85px; bottom:0px;" src="sweet9.png" height="26px" width="28px "></span><br>      
+                            
+        h1(style='font-size: 20px; color: #22313F; margin-top: 20px;') Duration
+        .durationContainer
+          #durationOption
+            input(style='background-color: #F39C12; color: #ECF0F1;', ng-click='showme=false', type='button', value='Slider')
+          #durationOption
+            input(style='background-color: #22313F; color: #ECF0F1;', ng-click='showme=true', type='button', value='value')
+          div(ng-hide='showme')
+            div(style='text-align: center; color: #22313F;') {{duration}}min
+            input(ng-model='duration', type='range', min='1', max='50')
+          div(ng-show='showme', style='margin-left: 5%; text-align: center;')
+            span(style='color: #22313F; font-weight: bold; text-align: center; font-size: 13px;')  Enter value: 
+            input(ng-model='duration', placeholder='minutes', style='color: #BFBFBF; border-radius: 5px; margin: 10px;', type='text')
+        h1(style='font-size: 20px; color: #22313F; margin-top: 20px; margin-bottom: 10px;') Ingredient
+        div(style='color: #6C7A89;')
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#butter(type='checkbox', name='butter', value='butter')
+            label(for='butter', style='margin-right: 5px;')
+            | butter
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#carrots(type='checkbox', name='carrots', value='carrots')
+            label(for='carrots', style='margin-right: 5px;')
+            | carrots
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#cream(type='checkbox', name='cream', value='cream')
+            label(for='cream', style='margin-right: 5px;')
+            | cream
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#eggs(type='checkbox', name='eggs', value='eggs')
+            label(for='eggs', style='margin-right: 5px;')
+            | eggs
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#flour(type='checkbox', name='flour', value='flour')
+            label(for='flour', style='margin-right: 5px;')
+            | flour
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#garlic(type='checkbox', name='garlic', value='garlic')
+            label(for='garlic', style='margin-right: 5px;')
+            | garlic
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#pepper(type='checkbox', name='pepper', value='pepper')
+            label(for='pepper', style='margin-right: 5px;')
+            | pepper
+          div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+            input#scotch(type='checkbox', name='scotch', value='scotch')
+            label(for='scotch', style='margin-right: 5px;')
+            | scotch
+          //
+                                <select>
+                                  <option value="" disabled selected>Choose...</option>
+                                  <option value="butter">butter</option>
+                                  <option value="carrots">carrots</option>
+                                  <option value="cream">cream</option>
+                                  <option value="eggs">eggs</option>
+                                  <option value="flour">flour</option>
+                                  <option value="garlic">garlic</option>
+                                  <option value="milk">oil</option>
+                                  <option value="audi">olive oil</option>
+                                </select>
+                            
+        h1(style='font-size: 20px; color: #22313F; margin-top: 20px; margin-bottom: 10px;') Rating
+        fieldset.rating
+          input#star5(type='radio', name='rating', value='5')
+          label(for='star5', title='Rocks!') 5 stars
+          input#star4(type='radio', name='rating', value='4')
+          label(for='star4', title='Pretty good') 4 stars
+          input#star3(type='radio', name='rating', value='3')
+          label(for='star3', title='Meh') 3 stars
+          input#star2(type='radio', name='rating', value='2')
+          label(for='star2', title='Kinda bad') 2 stars
+          input#star1(type='radio', name='rating', value='1')
+          label(for='star1', title='Sucks big time') 1 star
+    .headerContainer
+      #rightheader
+        div(ng-click='openMenu =! openMenu', style='display: inline; margin-left: 22%; top: 35%; position: absolute;')
+          img(src='menu10.png', height='15px', width='20px;')
+        #searchBox
+          input(type='search', placeholder='Search', ng-model='searchText')
+      #leftheader
+        span#leftheaderText Quizne
+    #facetMenu(ng-show='openMenu', style='color: #6C7A89;')
+      span(ng-repeat='config in Usersettings')
+        div(ng-if='config == \'text\'', style='float: left; padding: 20px;')
+          h1(style='color: #EEEEEE; font-size: 18px;') Text
+          span
+            form
+              div
+                input#texter(style='color: white;', value='hello', name='texter', type='text')
+        div(ng-if='config == \'radio\'', style='float: left; padding: 20px;')
+          h1(style='color: #EEEEEE; font-size: 18px;') Radio
+          span
+            form
+              div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+                input#cat(value='cat', name='animal', type='checkbox')
+                label(for='cat', style='margin-right: 4px;')
+                | cat
+              div(style='margin: 3px; background-color: #ECF0F1; display: inline-block; padding: 3px; border-radius: 5px; font-size: 12px;')
+                input#dog(value='dog', name='animal', type='checkbox')
+                label(for='dog', style='margin-right: 4px;')
+                | dog
+      //
+                    <div ng-repeat='config in Userconfig' style='color:#6C7A89'>
+                    </div>
+                
+      //
+                    <span ng-if="Usersettings[0] == 'radio'">
+                        <form style="float:left; padding: 20px;">
+                            <h1 style="color:#22A7F0">Radio</h1>
+                            <div ng-repeat='data in config.radio' style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+                                <input value="{{data.value}}" name="{{data.name}}" type="checkbox" id="{{data.value}}">
+                                <label for="{{data.value}}" style="margin-right:5px;"></label>{{data.value}}
+                            </div>
+                        </form>
+                    </span>
+                        <span ng-if="Usersettings[0] == 'text'">
+                            <form style="float:left; padding: 20px;">
+                                <h1 style="color:#22A7F0">Text</h1> 
+                                <div ng-repeat='data in config.text'>
+                                    <input style="{{data.style}}" value="{{data.value}}" name="{{data.name}}" type="text" id="{{data.value}}">
+                                </div>
+                            </form>
+                        </span>
+                        
+      div(ng-if='config == \'hoot\' ')
+        | //differnt template with hoot data
+    .mainContainer
+      .main
+        .navBar
+          #nav_indicator
+          a(href='#')
+            #all.navBar_item(name='all')
+              | All
+              img(style='padding-left: 10px;', src='dining8.png', height='25px', width='25px')
+          a(href='#', ng-model='difficulty', value='medium')
+            #easy.navBar_item(name='easy')
+              | Easy
+              img(style='padding-left: 10px;', src='spoon10.png', height='25px', width='25px')
+          a(href='#')
+            #medium.navBar_item(name='medium')
+              | Medium
+              img(style='padding-left: 10px;', src='kitchen49.png', height='25px', width='25px')
+          a(href='#')
+            #difficult.navBar_item(name='difficult')
+              | Difficult
+              img(style='padding-left: 10px;', src='fork27.png', height='25px', width='25px')
+        .filterContainer
+          span#filtertag(ng-show='meal.breakfast', name='hello')
+            | Breakfast
+            span#filtertagRemove
+              a(href='google.com') remove
+          span#filtertag(ng-show='meal.mainMeal', name='hello')
+            | Main Meal
+            span#filtertagRemove
+              a(href='google.com') remove
+          span#filtertag(ng-show='meal.snack', name='hello')
+            | side dish/snack
+            span#filtertagRemove
+              a(href='google.com') remove
+          span#filtertag(ng-show='meal.beverage', name='hello')
+            | Beverage
+            span#filtertagRemove
+              a(href='google.com') remove
+          span#filtertag(ng-show='meal.dessert', name='hello')
+            | Dessert
+            span#filtertagRemove
+              a(href='google.com') remove
+        .contentContainer
+          a(href='')
+            .contentItem(ng-click='selectMeal(meal)', ng-repeat='meal in recipes | filter:searchText | filter:duration | limitTo : paginationLimit()', ng-style='{\'background-image\':\'url({{ meal.url }})\'}')
+              span#contentItemHeader {{ meal.title }}
+              span#contentItemLevel {{ meal.level }}
+          div(ng-show='hasMoreItemsToShow()', style='text-align: center;')
+            input#showMore(ng-click='showMoreItems()', type='button', value='show more')
+    //
+      ng-show="showModal"
+    #modalBackground(ng-show='showModal')
+      #closeModal(ng-click='dissmisModalView(close)')
+        a(href='')
+          img#closeimg(src='close.png', height='0', width='0')
+      .modalContainer(ng-style='{\'background-image\':\'url({{selectedMeal.url}})\'}')
+        #modalHeader
+          div(style='padding-top: 10px;') {{selectedMeal.title}}
+        #infoSection(ng-show='showInfoSection')
+          #modalPictureView
+            #MealtagContainer
+              div(style='font-size: 13px; color: #F39C12;')
+                h3(style='color: white; font-size: 15px; display: inline-block;') Difficulty:
+                | {{selectedMeal.level}}
+                h3(style='margin-left: 15px; color: white; font-size: 15px; display: inline-block;') Duration:
+                | {{selectedMeal.duration}}min
+          #modalBodyContainer
+            #modalInfoBody
+              div(style='color: #BDC3C7; margin-left: 10px; font-size: 15px;')
+                h2(style='color: #F39C12;') Nutrition:
+                br
+                | Amount Per Serving (549g)
+                br
+                | Energy (kcal): 589
+                br
+                | Protein: 53.4g
+                br
+                | Total Fat: 29.4g
+                br
+                | Total Carbs: 17.1g
+                br
+                | Fibres: 1.4g
+                br
+                | WeightWatchers Pro Points: 14
+            #modalDescriptionBody(style='color: #BDC3C7;')
+              h1(style='color: #F39C12;') Description:
+              br
+              | {{selectedMeal.description}}
+        #ingredientSection(ng-show='showIngredientSection')
+          #ingredientBody
+            div(style='color: #BDC3C7; text-align: center; font-size: 19px; text-weight: bold; padding-top: 20px;')
+              | 1½ kg shrimp, large, whole
+              br
+              br
+              | 1 can(s) tomatoes, chopped
+              br
+              br
+              | 4 clove(s) garlic, finely diced
+              br
+              br
+              | 200 ml white wine
+              br
+              br
+              | 50 g breadcrumbs
+              br
+              br
+              | 100 ml olive oil
+              br
+              br
+              | 1 bunch(es) parsley, chopped
+        #methodSection(ng-show='showMethodSection')
+          #MethodBody
+        #shareSection(ng-show='showShareSection')
+          #ShareBody
+        #modalTabbar
+          ul#tabbarList
+            li
+              a#infoLink(href='', ng-click='showInfo("#infoLink")', style='margin-left: 30px; padding: 5px;')  Info 
+            li
+              a#ingredientsLink(href='', ng-click='showIngredient("#ingredientsLink")')  Ingredients 
+            li
+              a#methodLink(href='', ng-click='showMethod("#methodLink")')  Method 
+            li
+              a#shareLink(href='', ng-click='showShare("#shareLink")')  Share 
+        #nav_indicator.forTabbar(style='height: 1%; top: 97%; margin-left: 35px; width: 50px; border-radius: 10px;')

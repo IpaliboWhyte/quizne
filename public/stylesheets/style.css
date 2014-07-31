@@ -1,0 +1,618 @@
+html, body
+{
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    background: url("../images/srabi-foods-wallpaper-hd.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+*
+{
+    padding: 0;
+    margin: 0;
+}
+
+.headerContainer{
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 65px;
+	background-color: blue;
+	margin: 0px;
+}
+
+#rightheader{
+	position: absolute;
+	background-color: #34495E;
+	width: 100%;
+	height: 100%;
+	float: right;
+	color: white;
+}
+
+#leftheader{	
+	text-align: center;
+	position: relative;
+	background-color: #F39C12;
+	width: 20%;
+	min-width:240px;
+	height: 100%;
+}
+
+#leftheaderText{
+	position: relative;
+	font-family: 'PT Sans Narrow', sans-serif;
+	top: 30%;
+	color: #22313F;
+	font-size: 20px;
+}
+
+.leftsideBar{
+	float: left;
+	position: relative;
+	width: 20%;
+	min-width:240px;
+	height: 100%;
+	min-height: 100%;
+	background-color: #34495E;
+}
+
+#leftsidebarContent{
+	position:relative;
+	margin:0 auto;
+}
+
+.ratingSection{
+	position: relative;
+	background-color: green;
+	width: 100%;
+}
+
+.ingredientSection{
+	position: relative;
+	background-color: yellow;
+	width: 100%;
+}
+
+.readyinSection{
+	position: relative;
+	background-color: orange;
+	width: 100%;
+}
+
+.tagsSection{
+	position: relative;
+	background-color: brown;
+	width: 100%;
+}
+
+#searchBox{
+	padding-top: 17px;
+	padding-right: 100px;
+	float: right;
+	font-size: 13px;
+	color: white;
+	padding-left: 300px;
+}
+
+input[type="text"]{ 
+padding: 10px;
+
+border-radius: 30px;
+-moz-border-radius: 30px;
+-khtml-border-radius: 30px;
+-webkit-border-radius: 30px;
+
+border-width: 0;
+width: 130px;
+height: 10px;
+color: white;
+font-size: 13px;
+background-color: #22313F;
+
+}
+
+input[type="search"]{ 
+padding: 10px;
+
+border-radius: 30px;
+-moz-border-radius: 30px;
+-khtml-border-radius: 30px;
+-webkit-border-radius: 30px;
+
+border-width: 0;
+width: 130px;
+height: 30px;
+color: white;
+font-size: 13px;
+background-color: #22313F;
+
+}
+
+input[type="checkbox"]{ 
+	display:none;
+}
+
+input[type=checkbox] + label
+{
+cursor:pointer;
+border-radius: 10px;
+background: #34495E;
+height: 10px;
+width: 10px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+input[type=checkbox]:checked + label
+{
+background: #F39C12;
+height: 10px;
+width: 10px;
+display:inline-block;
+padding: 0 0 0 0px;
+}
+
+#mainBody{
+	opacity: 0;
+}
+
+.mainContainer{
+float: right;
+position: relative;
+top: 10%;
+width: 80%;
+height: 90%;
+overflow:scroll;
+overflow-x: hidden;
+}
+
+.main{
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+	top: 25%;
+	width:100%;
+	height: 75%;
+	z-index: 1000;
+	float: left;
+}
+
+.navBar{
+	bottom: -20%;
+	position: relative;
+	width:100%;
+	height: 10%;
+	background-color: black;
+	opacity: 0.8;
+	color: white;
+}
+
+.navBar_item{
+	padding-top: 10px;
+	text-align: center;
+	left: 0px;
+	height: 20px;
+	color: white;
+	font-size: 13px;
+}
+
+#all{
+	position: absolute;
+	float: left;
+	width: 25%;
+}
+
+#easy{
+	position: absolute;
+	float: left;
+	left: 25%;
+	width: 25%;
+}
+
+#medium{
+	float: left;
+	left: 50%;
+	width: 25%;
+	position: absolute;
+}
+
+#difficult{
+	float: left;
+	left: 75%;
+	width: 25%;
+	position: absolute;
+}
+
+#nav_indicator{
+	background-color: #F39C12;
+	position: absolute;
+	left: 0%;
+	top: 90%;
+	width: 25%;
+	height: 10%;
+}
+
+#closeModal{
+	position: absolute;
+	top: 9%;
+	left: 78%;
+	display: inline;
+	z-index: 5000;
+
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+H1{
+	color: #22313F;
+	font-size: 25px;
+}
+
+#mealTypeForm{
+	padding-top: 5px;
+	padding-left: 20px;
+	color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+#checkBox{
+}
+
+.checkBoxText{
+	padding-left: 20px;
+	font-size: 14px;
+	font-family: 'Lato', sans-serif;
+}
+
+
+.filterContainer{
+	position: relative;
+	width: 100%;
+	height: auto;
+	min-height: 20%;
+	background-color: white;
+}
+
+.contentContainer{
+	width: 100%;
+	height: auto;
+	min-height: 70%;
+	background-color: white;
+}
+
+.durationContainer{
+	padding-top: 10px;
+	width: 100%
+	height: 30%;
+}
+
+#durationOption{
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+
+input[type="button"]{
+	cursor: pointer;
+	font-size: 13px;
+	background:none;
+	outline: 0;
+	border: 0;
+	width: 50%;
+	height: 30px;
+}
+
+select{
+	color: #BFBFBF;
+	border: 0;
+	width: 80%;
+	height: 30px;
+	background: none;
+	background-color: #22313F;
+}
+
+#filtertag{
+	display: inline-block;
+	background-color: #D2D7D3;
+	position: relative;
+	padding: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	text-align: center;
+	border-radius: 15px;
+	color: #6C7A89;
+}
+
+#filtertag:hover {
+	color: #6C7A89;
+	border-radius: 0px;
+	-webkit-transition: border-radius 0.5s ease-out;
+}
+
+#filtertag:hover #filtertagRemove{
+	display:inline;
+	border-radius: 0px;
+	-webkit-transition: border-radius 0.5s ease-out;
+}
+
+#filtertagRemove{
+	border-style:solid;
+	border-left:1px solid white;
+	border-top: 0px;
+	border-bottom: 0px;
+	padding-left: 5px;
+	display: none;
+	width: 50px;
+	position: relative;
+	opacity: 1;
+	-webkit-transition: display 0.5s ease-out;
+}
+
+#filtertagRemove a{
+	color: #F39C12;
+}
+
+#filtertagRemove:hover{
+	opacity: 1;
+    -webkit-transition: opacity 0.5s ease-out;
+}
+
+#filtertagRemove:hover:after{
+	background-color: black;3
+    -webkit-transition: opacity 0.5s ease-out;
+}
+
+.contentItem{
+	font-size: 12px;
+	color: white;
+	display: inline-block;
+	position: relative;
+	background-color: #F39C12; 
+	width:230px; 
+	height:150px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#contentItemHeader{
+	font-size: 15px;
+	position: absolute;
+	background-color: black;
+	opacity: 0.7;
+	height: 30%;
+	width: 100%;
+}
+
+#contentItemLevel{
+	position: absolute;
+	background-color: #F39C12;
+	border-radius: 3px;
+	opacity: 0.9;
+	width: auto;
+	height: auto;
+	padding: 5px;
+	top: 76%;
+	margin: 5px;
+ }
+
+#modalBackground{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 2000;
+}
+
+.modalContainer{
+ 	position: absolute;
+ /*	background: url("cookiescover.jpg"); */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+ 	left: 20%;
+ 	top: -70%;
+ 	width: 60%;
+ 	height: 80%;
+ 	z-index: 2000;
+ 	overflow: hidden;
+ 	border-radius: 5px;
+}
+
+#modalHeader{
+	width: 100%;
+	height: 10%;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	/* background-color: #BDC3C7; */
+	background-color: rgba(189, 195, 199, 0.5);
+	font-weight:bold;
+	font-size: 25px
+}
+
+#modalPictureView{
+	position: relative;
+	width: 100%;
+	height: 50%;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+#tabbarList{
+	padding: 10px;
+}
+
+#tabbarList li{
+display: inline;
+list-style-type: none;
+padding-right: 150px;
+}
+
+#modalBodyContainer{
+	position: relative;
+	width: 100%;
+	height: 50%;
+}
+
+#modalInfoBody{
+	background-color: rgba(255, 255, 255, 1);
+	position: relative;
+	width: 40%;
+	height: 100%;
+	float: left;
+}
+
+#modalDescriptionBody{
+	position: relative;
+	background-color: rgba(255, 255, 255, 1);
+	width: 60%;
+	height: 100%;
+	float: left;
+}
+
+#modalTabbar{
+	width: 100%;
+	height: 10%;
+	background-color: #34495E;
+}
+
+#infoSection{
+	height: 80%;
+	width:100%;
+}
+
+#ingredientSection{
+	background-color: #ECF0F1;
+	height: 80%;
+	width:100%;
+}
+
+#ingredientBody{
+	background-color: #ECF0F1;
+	height: 100%;
+	width:100%;
+}
+
+#methodSection{
+	background-color: #ECF0F1;
+	height: 80%;
+	width:100%;
+}
+
+#shareSection{
+	background-color: #ECF0F1;
+	height: 80%;
+	width:100%;
+}
+
+#MealtagContainer{
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	top: 90%;
+}
+
+#showMore{
+	color: white; 
+	background-color: #2C3E50; 
+	width: 80px; 
+	margin: 40px; 
+	border-radius:2px;
+
+	transition: background-color 0.4s;
+	-moz-transition:background-color 0.4s; /* Firefox 4 */
+	-webkit-transition:background-color 0.4s; /* Safari and Chrome */
+	-o-transition:background-color 0.4s; /* Opera */
+}
+
+#showMore:hover{
+background-color: #F39C12;
+opacity: 0.8;
+}
+
+#facetMenu{
+	margin-left:21%; 
+	top:68px; 
+	position:absolute; 
+	width:70%; 
+	height:40%; 
+	background-color:rgba(52, 73, 94, 1);
+	z-index:8000; 
+	padding:25px;
+	border-radius: 10px;
+}
+
+input[type="range"]{
+	margin: 10px;
+	width: 90%;
+	-webkit-appearance: none !important;
+    background:#22313F;
+    border-radius: 15px;
+    height: 8px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    height:30px;
+    width:30px;
+}
+
+
+fieldset{
+    padding-right: 30%;
+}
+
+.rating{
+	border:0;
+}
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:120%;
+    line-height:1.2;
+    color:#22313F;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★  ';
+}
+
+.rating > input:checked ~ label {
+    color: #F9BF3B;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #2C3E50;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+:focus {outline:none;}
