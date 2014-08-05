@@ -2,7 +2,8 @@ html, body
 {
     height: 100%;
     font-family: 'Lato', sans-serif;
-    background: url("srabi-foods-wallpaper-hd.jpg") no-repeat center center fixed; 
+    /*background: url("srabi-foods-wallpaper-hd.jpg") no-repeat center center fixed; */
+    background-color: #ECF0F1;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

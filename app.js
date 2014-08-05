@@ -8,7 +8,8 @@ var morgan = require('morgan'); 			// log requests to the console (express4)
 var bodyParser = require('body-parser'); 	// pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var path = require('path');
-
+var fs = require('fs');
+var obj;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,4 +30,10 @@ console.log("App listening on port 8080");
 
 app.get('/Quizne', function(req, res) {
 	res.render('quizne');
+});
+
+app.get('/Quizne/reciepes', function(req, res){
+	fs.readFile('reciepes.json', function (err, data) {
+    	res.send(data);
+	});
 });

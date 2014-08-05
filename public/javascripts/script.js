@@ -7,14 +7,38 @@ $( document ).ready(function() {
 var currentSection = "info";
 
 angular.module('mealApp', [])
-    .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
-    $scope.recipes = mealFactory.recipes;
+    .controller('mealController', ['$scope', '$http', 'mealFactory', function ($scope, $http, mealFactory) {
+    //$scope.recipes = mealFactory.recipes;
     $scope.selectedMeals = [];
     $scope.text = '';
     $scope.openMenu = false;
+    var myData = [];
     var pagesShown = 1;
-	var pageSize = 8;
-	    
+	var pageSize = 8;  
+
+	$http({method: 'get', url: "javascripts/reciepes.json"}).
+    success(function(data, status, headers, config) {
+      // this callback will be called asynchronously
+      // when the response is available
+      $scope.recipes = data;
+      console.log("record length is: " +data.length);
+    }).
+    error(function(data, status, headers, config) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    }); 
+	   
+/*
+	$http({method: 'JSONP', url: 'https://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero'}).
+        success(function(data, status) {
+          console.log(status);
+          console.log(data);
+        }).
+        error(function(data, status) {
+          console.log(status);
+          console.log(data);
+      });
+*/
     $scope.paginationLimit = function(data) {
         return pageSize * pagesShown;
     };
@@ -62,8 +86,7 @@ angular.module('mealApp', [])
 		changeTabBarIndicatorto(linkName);
 	};
 
-	$scope.Userconfig = 
-	[
+	$scope.Userconfig = [
 		{
 			"radio":[
 				{
@@ -102,8 +125,7 @@ angular.module('mealApp', [])
 		},
 	]
 
-	$scope.Usersettings = ["radio","text"];
-
+	$scope.Usersettings = ["text","radio"];
 
 	/*
 	[
@@ -130,8 +152,7 @@ angular.module('mealApp', [])
 
 		{
 			"divtype": "nolove",
-		}
-	]
+		}]
 */
 
 	function resetAndshow(linkName){

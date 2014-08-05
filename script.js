@@ -102,7 +102,7 @@ angular.module('mealApp', [])
 		},
 	]
 
-	$scope.Usersettings = ["radio","text"];
+	$scope.Usersettings = ["text","radio"];
 
 
 	/*
@@ -981,7 +981,7 @@ function changeTabBarIndicatorto(linkName){
 
 function welcomeModal(){
 	$('#modalBackground').animate({"opacity": "1"},400, function(){
-		$('.modalContainer').animate({"opacity": "1","top": "10%"},400,function(){
+		$('.modalContainer').animate({"top": "10%"},400,function(){
 				$("#closeimg").animate({
 	            width: "30px",//HERE
 	            height: "30px"
@@ -991,7 +991,7 @@ function welcomeModal(){
 }
 
 function dissmisModal(){
-		$('.modalContainer').animate({"opacity": "0","top": "-70%"},400, function(){
+		$('.modalContainer').animate({"top": "-70%"},400, function(){
 			$('#modalBackground').animate({"opacity": "0"},400)
 		});
 
