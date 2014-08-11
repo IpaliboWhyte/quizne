@@ -13,7 +13,12 @@
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700' rel='stylesheet' type='text/css'>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript" src="angular.min.js"></script>
+		<link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+    	<script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js">
+    	</script>
+    	<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js">
+    	</script>
+
 	</head>
 
 	<body id="mainBody" ng-controller="mealController">
@@ -27,18 +32,18 @@
 			
 			<div id="leftsidebarContent">
 
-				<h1 style="font-size:20px; color:#22313F;" >Meal type</h1>
+				<h1 style="font-size:15px; color:#22313F;" >Meal type</h1>
 				
 				<form id="mealTypeForm" style="color: #ECF0F1">
 
-				<select>
+				<select ng-model="mealTypevalue">
 					  <option value="" disabled selected>Choose...</option>
 					  <option value="Breakfast">Breakfast</option>
-					  <option value="mainMeal">Main Meal</option>
+					  <option value="Main Meal">Main Meal</option>
 					  <option value="snacks">side dish/snack</option>
 					  <option value="Beverage">Beverage</option>
 					  <option value="starters">starter/soup</option>
-					  <option value="desserts">desserts</option>
+					  <option value="Dessert">desserts</option>
 				</select>
 
 				<!--
@@ -60,14 +65,14 @@
 				</form>
 
 
-				<H1 style="font-size:20px; color:#22313F; margin-top:20px;">Duration</H1>
+				<H1 style="font-size:15px; color:#22313F; margin-top:0px;">Duration</H1>
 				<div class="durationContainer">
 					<div id="durationOption">
-						<input style="background-color:#F39C12; color: #ECF0F1;" ng-click="showme=false" type="button" value="Slider" >
+						<input style="background-color:#F39C12;" ng-click="showme=false" type="button" value="Slider" id="slide">
 					</div>
 
 					<div id="durationOption">
-						<input style="background-color:#22313F; color: #ECF0F1;" ng-click="showme=true" type="button" value="value">
+						<input style="background-color:#22313F;" ng-click="showme=true" type="button" value="value" id="byValue">
 					</div>
 
 					<div ng-hide="showme">
@@ -82,17 +87,23 @@
 						</div>
 				</div>
 
-				<h1 style="font-size:20px; color:#22313F; margin-top:20px; margin-bottom:10px;">Ingredient</h1>
+				<h1 style="font-size:15px; color:#22313F; margin-top:0px; margin-bottom:0px;">Ingredient</h1>
 
 				<div style="color:#6C7A89">
 
+					<div ng-repeat="meal in recipes" style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
+						<input type='checkbox' name='{{meal.ingredientIs}}' value='{{meal.ingredientIs}}' id="{{meal.ingredientIs}}"/>
+						<label for="{{meal.ingredientIs}}" style="margin-right:5px;"></label>{{meal.ingredientIs}}
+					</div>
+
+					<!--
 					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
-						<input type='checkbox' name='butter' value='butter' id="butter"/>
+						<input ng-model="butter" type='checkbox' name='butter' value='butter' id="butter"/>
 						<label for="butter" style="margin-right:5px;"></label>butter
 					</div>
 
 					<div style="margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;">
-						<input type='checkbox' name='carrots' value='carrots' id="carrots"/>
+						<input ng-model="value" type='checkbox' name='carrots' value='carrots' id="carrots"/>
 						<label for="carrots" style="margin-right:5px;"></label>carrots
 					</div>
 
@@ -125,7 +136,7 @@
 						<input type='checkbox' name='scotch' value='scotch' id="scotch"/>
 						<label for="scotch" style="margin-right:5px;"></label>scotch
 					</div>					
-
+					-->
 
 				<!--
 					<select>
@@ -139,17 +150,19 @@
 					  <option value="milk">oil</option>
 					  <option value="audi">olive oil</option>
 					</select>
+					
 				-->
+
 				</div>
 
-				<h1 style="font-size:20px; color:#22313F; margin-top:20px; margin-bottom:10px;">Rating</h1>
+				<h1 style="font-size:15px; color:#22313F; margin-top:20px; margin-bottom:0px;">Rating</h1>
 
-					<fieldset class="rating">
-					    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
-					    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
-					    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
-					    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
-					    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+					<fieldset class="rating" style="margin-right: 70px;">
+					    <input type="radio" ng-model="ratingModel" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+					    <input type="radio" ng-model="ratingModel" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+					    <input type="radio" ng-model="ratingModel" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+					    <input type="radio" ng-model="ratingModel" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+					    <input type="radio" ng-model="ratingModel" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
 					</fieldset>
 
 			</div>
@@ -298,18 +311,33 @@
 
 
 			<div class="contentContainer">
-
 				<a href="">
-				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in recipes | filter:searchText | filter:duration | limitTo : paginationLimit()' ng-style="{'background-image':'url({{ meal.url }})'}">
+				<div ng-click='selectMeal(meal)' class="contentItem" ng-repeat='meal in filteredReciepes | filter:{title: searchText} | filter:duration | filter:{type: mealTypevalue} | filter:{ratings: ratingModel} |filter : value1 ' ng-style="{'background-image':'url({{ meal.url }})'}">
 					<span id="contentItemHeader">{{ meal.title }}</span>
 					<span id="contentItemLevel">{{ meal.level }}</span>
+
+					<span id="contentItemRating">
+						<span ng-repeat="stars in [] | range:meal.ratings">
+							<img src="star129.png" height="15px" width="15px">	
+						</span>
+
+						<span ng-repeat="dots in [] | range:5-meal.ratings">
+							<img style="margin: 3px;" src="dot.png" height="5px" width="5px">
+						</span>
+					</span>
+					
 				</div>
-
 				</a>
-
+			<div data-pagination="" data-num-pages="numPages()" 
+	      		data-current-page="currentPage" data-max-size="maxSize"  
+	      		data-boundary-links="true">  		
+      		</div>
+			<!--
 			<div ng-show="hasMoreItemsToShow()" style="text-align: center"> <input ng-click="showMoreItems()" id="showMore" type="button" value="show more"></div>
+			-->
 			</div>
 		</div>
+
 	</div>
 <!--ng-show="showModal"--> 
 		
@@ -330,7 +358,17 @@
 						<div style="font-size:13px; color:#F39C12;">
 							<h3 style="color: white; font-size:15px; display: inline-block;">Difficulty:</h3> {{selectedMeal.level}}
 							<h3 style=" margin-left: 15px; color: white; font-size:15px; display: inline-block;">Duration:</h3> {{selectedMeal.duration}}min
-						</div>
+							<h3 style="margin-left: 15px; color: white; font-size:15px; display: inline-block;">
+							Rating:</h3>
+							<span>
+								<span ng-repeat="stars in [] | range:selectedMeal.ratings">
+									<img src="star129.png" height="15px" width="15px">
+								</span>
+								<span ng-repeat="dots in [] | range:5-selectedMeal.ratings">
+								<img style="margin: 3px;" src="dot.png" height="5px" width="5px">
+								</span>
+							</span>
+						</div>		
 
 					</div>
 
@@ -338,16 +376,14 @@
 
 				<div id="modalBodyContainer">
 					<div id="modalInfoBody">
-					<div style="color:#BDC3C7; margin-left:10px; font-size:15px;">
+					<div style="color:#BDC3C7; margin-left:10px; font-size:13px;">
 						<h2 style="color:#F39C12;">Nutrition:</h2>
-						<br>
 						Amount Per Serving (549g)<br>
 						Energy (kcal): 589<br>
 						Protein: 53.4g<br>
 						Total Fat: 29.4g<br>
 						Total Carbs: 17.1g<br>
 						Fibres: 1.4g<br>
-						WeightWatchers Pro Points: 14
 					</div>
 					
 					</div>
@@ -362,7 +398,7 @@
 			<div id="ingredientSection" ng-show="showIngredientSection">
 				
 				<div id="ingredientBody">
-					<div style="color:#BDC3C7; text-align:center; font-size:19px; text-weight:bold; padding-top:20px;">
+					<div style="color:#BDC3C7; text-align:center; font-size:13px; text-weight:bold; padding-top:20px;">
 					 1½ kg shrimp, large, whole <br><br>
 
 					 1 can(s) tomatoes, chopped <br><br>
@@ -404,14 +440,14 @@
 
 			<div id="modalTabbar">
 				<ul id="tabbarList">
-					<li><a id="infoLink" href="" ng-click='showInfo("#infoLink")'href="" style="margin-left:30px; padding:5px;"> Info </a></li>
+					<li><a id="infoLink" href="" ng-click='showInfo("#infoLink")'href=""> Info </a></li>
 					<li><a id="ingredientsLink" href="" ng-click='showIngredient("#ingredientsLink")'> Ingredients </a></li>
 					<li><a id="methodLink" href="" ng-click='showMethod("#methodLink")'> Method </a></li>
 					<li><a id="shareLink" href="" ng-click='showShare("#shareLink")'> Share </a></li>
 				</ul>
 			</div>
 
-			<div class="forTabbar" id="nav_indicator" style="height: 1%; top:97%; margin-left:35px; width:50px; border-radius:10px;"></div>
+			<div class="forTabbar" id="nav_indicator" style="height: 1%; top:96%; margin-left:35px; width:50px; border-radius:10px;"></div>
 
 		</div>
 	</div>

@@ -2,13 +2,15 @@ doctype html
 html(ng-app='mealApp')
   head
     meta(http-equiv='Content-Type', content='text/html;charset=UTF-8')
-    link(href='/stylesheets/style.css',rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
     link(href='http://fonts.googleapis.com/css?family=Lato', rel='stylesheet', type='text/css')
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
     link(href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:700', rel='stylesheet', type='text/css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-    script(src='/javascripts/script.js')
-    script(src='/javascripts/angular.min.js')
+    script(type='text/javascript', src='/javascripts/script.js')
+    link(data-require='bootstrap-css@2.3.2', data-semver='2.3.2', rel='stylesheet', href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css')
+    script(data-require='angular.js@1.1.5', data-semver='1.1.5', src='http://code.angularjs.org/1.1.5/angular.min.js')           
+    script(data-require='angular-ui-bootstrap@0.3.0', data-semver='0.3.0', src='http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js')
 body#mainBody(ng-controller='mealController')
   block content
     .leftsideBar
@@ -19,7 +21,7 @@ body#mainBody(ng-controller='mealController')
       #leftsidebarContent
         h1(style='font-size: 20px; color: #22313F;') Meal type
         form#mealTypeForm(style='color: #ECF0F1;')
-          select
+          select(ng-model='mealTypevalue')
             option(value='', disabled='disabled', selected='selected') Choose...
             option(value='Breakfast') Breakfast
             option(value='mainMeal') Main Meal
@@ -44,9 +46,9 @@ body#mainBody(ng-controller='mealController')
         h1(style='font-size: 20px; color: #22313F; margin-top: 20px;') Duration
         .durationContainer
           #durationOption
-            input(style='background-color: #F39C12; color: #ECF0F1;', ng-click='showme=false', type='button', value='Slider')
+            input#slide(style='background-color: #F39C12; color: #ECF0F1;', ng-click='showme=false', type='button', value='Slider')
           #durationOption
-            input(style='background-color: #22313F; color: #ECF0F1;', ng-click='showme=true', type='button', value='value')
+            input#byValue(style='background-color: #22313F; color: #ECF0F1;', ng-click='showme=true', type='button', value='value')
           div(ng-hide='showme')
             div(style='text-align: center; color: #22313F;') {{duration}}min
             input(ng-model='duration', type='range', min='1', max='50')
@@ -102,15 +104,15 @@ body#mainBody(ng-controller='mealController')
                             
         h1(style='font-size: 20px; color: #22313F; margin-top: 20px; margin-bottom: 10px;') Rating
         fieldset.rating
-          input#star5(type='radio', name='rating', value='5')
+          input#star5(type='radio', ng-model="ratingModel", name='rating', value='5')
           label(for='star5', title='Rocks!') 5 stars
-          input#star4(type='radio', name='rating', value='4')
+          input#star4(type='radio', ng-model="ratingModel", name='rating', value='4')
           label(for='star4', title='Pretty good') 4 stars
-          input#star3(type='radio', name='rating', value='3')
+          input#star3(type='radio', ng-model="ratingModel", name='rating', value='3')
           label(for='star3', title='Meh') 3 stars
-          input#star2(type='radio', name='rating', value='2')
+          input#star2(type='radio', ng-model="ratingModel", name='rating', value='2')
           label(for='star2', title='Kinda bad') 2 stars
-          input#star1(type='radio', name='rating', value='1')
+          input#star1(type='radio', ng-model="ratingModel", name='rating', value='1')
           label(for='star1', title='Sucks big time') 1 star
     .headerContainer
       #rightheader
@@ -204,11 +206,16 @@ body#mainBody(ng-controller='mealController')
               a(href='google.com') remove
         .contentContainer
           a(href='')
-            .contentItem(ng-click='selectMeal(meal)', ng-repeat='meal in recipes | filter:searchText | filter:duration | limitTo : paginationLimit()', ng-style='{\'background-image\':\'url({{ meal.url }})\'}')
+            .contentItem(ng-click='selectMeal(meal)', ng-repeat='meal in filteredReciepes | filter:{ratings:ratingModel} |filter:{type: mealTypevalue} | filter:{title:searchText} | filter:duration | limitTo : paginationLimit()', ng-style='{\'background-image\':\'url({{ meal.url }})\'}')
               span#contentItemHeader {{ meal.title }}
               span#contentItemLevel {{ meal.level }}
-          div(ng-show='hasMoreItemsToShow()', style='text-align: center;')
-            input#showMore(ng-click='showMoreItems()', type='button', value='show more')
+              span#contentItemRating
+                span(ng-repeat='stars in [] | range:meal.ratings')
+                    img(src='images/star129.png', height='15px', width='15px')
+                  span(ng-repeat='dots in [] | range:5-meal.ratings')
+                    img(style='margin: 3px;', src='images/dot.png', height='5px', width='5px')
+
+          div(data-pagination='', data-num-pages='numPages()', data-current-page='currentPage', data-max-size='maxSize', data-boundary-links='true')
     //
       ng-show="showModal"
     #modalBackground(ng-show='showModal')
@@ -226,11 +233,17 @@ body#mainBody(ng-controller='mealController')
                 | {{selectedMeal.level}}
                 h3(style='margin-left: 15px; color: white; font-size: 15px; display: inline-block;') Duration:
                 | {{selectedMeal.duration}}min
+                h3(style='margin-left: 15px; color: white; font-size: 15px; display: inline-block;')
+                  | Rating:
+                  span
+                    span(ng-repeat='stars in [] | range:selectedMeal.ratings')
+                      img(src='images/star129.png', height='15px', width='15px')
+                    span(ng-repeat='dots in [] | range:5-selectedMeal.ratings')
+                      img(style='margin: 3px;', src='images/dot.png', height='5px', width='5px')
           #modalBodyContainer
             #modalInfoBody
-              div(style='color: #BDC3C7; margin-left: 10px; font-size: 15px;')
+              div(style='color: #BDC3C7; margin-left: 10px; font-size: 13px;')
                 h2(style='color: #F39C12;') Nutrition:
-                br
                 | Amount Per Serving (549g)
                 br
                 | Energy (kcal): 589
@@ -242,15 +255,13 @@ body#mainBody(ng-controller='mealController')
                 | Total Carbs: 17.1g
                 br
                 | Fibres: 1.4g
-                br
-                | WeightWatchers Pro Points: 14
             #modalDescriptionBody(style='color: #BDC3C7;')
               h1(style='color: #F39C12;') Description:
               br
               | {{selectedMeal.description}}
         #ingredientSection(ng-show='showIngredientSection')
           #ingredientBody
-            div(style='color: #BDC3C7; text-align: center; font-size: 19px; text-weight: bold; padding-top: 20px;')
+            div(style='color: #BDC3C7; text-align: center; font-size: 13px; text-weight: bold; padding-top: 20px;')
               | 1½ kg shrimp, large, whole
               br
               br

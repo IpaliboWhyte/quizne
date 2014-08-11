@@ -2,11 +2,13 @@ var activeLink = "";
 const MAIN_HEIGHT = "20%";
 const MAIN_WIDTH = "20%"
 var original = $('.navBar');
+var durationSelected;
+var durationNormal;
 
 $( document ).ready(function() {
 var currentSection = "info";
 
-angular.module('mealApp', [])
+angular.module('mealApp', ['ui.bootstrap'])
     .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
     $scope.recipes = mealFactory.recipes;
     $scope.selectedMeals = [];
@@ -14,18 +16,22 @@ angular.module('mealApp', [])
     $scope.openMenu = false;
     var pagesShown = 1;
 	var pageSize = 8;
-	    
-    $scope.paginationLimit = function(data) {
-        return pageSize * pagesShown;
-    };
 
-    $scope.hasMoreItemsToShow = function() {
-		return pagesShown < ($scope.recipes.length / pageSize);
-	};
-
-	$scope.showMoreItems = function() {
-        pagesShown = pagesShown + 1;       
-    };
+	$scope.filteredReciepes = []
+  ,$scope.currentPage = 1
+  ,$scope.numPerPage = 10
+  ,$scope.maxSize = 5;
+  
+  $scope.numPages = function () {
+    return Math.ceil($scope.recipes.length / $scope.numPerPage);
+  };
+  
+  $scope.$watch('currentPage + numPerPage', function() {
+    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+    , end = begin + $scope.numPerPage;
+    
+    $scope.filteredReciepes = $scope.recipes.slice(begin, end);
+  });
 
     $scope.selectMeal = function(meal) {
   		$scope.selectedMeal = meal;
@@ -104,36 +110,6 @@ angular.module('mealApp', [])
 
 	$scope.Usersettings = ["text","radio"];
 
-
-	/*
-	[
-		{
-			"data":
-			[
-				{
-					"divtype": "input",
-					"type":"radio",
-					"style":"margin:5px; color:green;",
-					"text":"Breakfast",
-					"divStyle":"color:white"
-				},
-
-				{
-					"divtype": "input",
-					"type":"radio",
-					"style":"margin:5px; color:green;",
-					"text":"Breakfast",
-					"divStyle":"color:white"
-				}
-			]
-		},
-
-		{
-			"divtype": "nolove",
-		}
-	]
-*/
-
 	function resetAndshow(linkName){
 		if(linkName == "#infoLink"){
 			$scope.showInfoSection = true;
@@ -159,8 +135,7 @@ angular.module('mealApp', [])
 			$scope.showShareSection = false;
 		}
 	}
-}])
-    .factory('mealFactory', [function () {
+}]).factory('mealFactory', [function () {
     return {
         recipes:[
     {
@@ -177,6 +152,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"carrots",
 	  "method": 
 		  [
 		    {
@@ -199,6 +175,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"pepper",
 	  "method": 
 		  [
 		    {
@@ -221,6 +198,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"scotch",
 	  "method": 
 		  [
 		    {
@@ -243,6 +221,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"butter",
 	  "method": 
 		  [
 		    {
@@ -250,100 +229,7 @@ angular.module('mealApp', [])
 		    }
 		  ]
 	},
-
 	{
-	  "type": "Main Meal",
-	  "title": "Vegetable bhaji salad",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 15,
-	  "level":"hot",
-	  "url":"http://s9.favim.com/orig/130818/-_-food-pancake-Favim.com-858765.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Dessert",
-	  "title": "Caramel fudge",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 1,
-	  "duration": 50,
-	  "level":"medium",
-	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Side dish/snack",
-	  "title": "Mixed veg",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 5,
-	  "duration": 5,
-	  "level":"sweet",
-	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Beverage",
-	  "title": "Spicy HamBurger",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 32,
-	  "level":"hot",
-	  "url":"http://37.media.tumblr.com/51bedc9e7334de555c1b00dd3ed8cf22/tumblr_mo9e0eI0fa1riu320o1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	 {
 	  "type": "Breakfast",
 	  "title": "Chili con carne",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
@@ -357,6 +243,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"carrots",
 	  "method": 
 		  [
 		    {
@@ -379,6 +266,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"pepper",
 	  "method": 
 		  [
 		    {
@@ -401,6 +289,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"scotch",
 	  "method": 
 		  [
 		    {
@@ -423,6 +312,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"butter",
 	  "method": 
 		  [
 		    {
@@ -430,100 +320,7 @@ angular.module('mealApp', [])
 		    }
 		  ]
 	},
-
 	{
-	  "type": "Main Meal",
-	  "title": "Vegetable bhaji salad",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 15,
-	  "level":"hot",
-	  "url":"http://s9.favim.com/orig/130818/-_-food-pancake-Favim.com-858765.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Dessert",
-	  "title": "Caramel fudge",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 1,
-	  "duration": 50,
-	  "level":"medium",
-	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Side dish/snack",
-	  "title": "Mixed veg",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 5,
-	  "duration": 5,
-	  "level":"sweet",
-	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Beverage",
-	  "title": "Spicy HamBurger",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 32,
-	  "level":"hot",
-	  "url":"http://37.media.tumblr.com/51bedc9e7334de555c1b00dd3ed8cf22/tumblr_mo9e0eI0fa1riu320o1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	 {
 	  "type": "Breakfast",
 	  "title": "Chili con carne",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
@@ -537,6 +334,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"carrots",
 	  "method": 
 		  [
 		    {
@@ -559,6 +357,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"pepper",
 	  "method": 
 		  [
 		    {
@@ -581,6 +380,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"scotch",
 	  "method": 
 		  [
 		    {
@@ -603,6 +403,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"butter",
 	  "method": 
 		  [
 		    {
@@ -610,100 +411,7 @@ angular.module('mealApp', [])
 		    }
 		  ]
 	},
-
 	{
-	  "type": "Main Meal",
-	  "title": "Vegetable bhaji salad",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 15,
-	  "level":"hot",
-	  "url":"http://s9.favim.com/orig/130818/-_-food-pancake-Favim.com-858765.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Dessert",
-	  "title": "Caramel fudge",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 1,
-	  "duration": 50,
-	  "level":"medium",
-	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Side dish/snack",
-	  "title": "Mixed veg",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 5,
-	  "duration": 5,
-	  "level":"sweet",
-	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Beverage",
-	  "title": "Spicy HamBurger",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 32,
-	  "level":"hot",
-	  "url":"http://37.media.tumblr.com/51bedc9e7334de555c1b00dd3ed8cf22/tumblr_mo9e0eI0fa1riu320o1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	 {
 	  "type": "Breakfast",
 	  "title": "Chili con carne",
 	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
@@ -717,6 +425,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"carrots",
 	  "method": 
 		  [
 		    {
@@ -739,6 +448,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"pepper",
 	  "method": 
 		  [
 		    {
@@ -761,6 +471,7 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"scotch",
 	  "method": 
 		  [
 		    {
@@ -783,112 +494,27 @@ angular.module('mealApp', [])
 		      "vegetable": "40ml"
 		    }
 		  ],
+	  "ingredientIs":"butter",
 	  "method": 
 		  [
 		    {
 		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
 		    }
 		  ]
-	},
-
-	{
-	  "type": "Main Meal",
-	  "title": "Vegetable bhaji salad",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 15,
-	  "level":"hot",
-	  "url":"http://s9.favim.com/orig/130818/-_-food-pancake-Favim.com-858765.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Dessert",
-	  "title": "Caramel fudge",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 1,
-	  "duration": 50,
-	  "level":"medium",
-	  "url":"http://31.media.tumblr.com/246db30925693c42cc88e2e3b4cd8f39/tumblr_n3rn31akff1qzk4ruo1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Side dish/snack",
-	  "title": "Mixed veg",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 5,
-	  "duration": 5,
-	  "level":"sweet",
-	  "url":"http://33.media.tumblr.com/29cee3f9474c8d8de183f5027bb35a06/tumblr_ms11l8E3Ml1rzwv55o1_500.png",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
-
-	{
-	  "type": "Beverage",
-	  "title": "Spicy HamBurger",
-	  "description": "A spicy and fragrant chili with ground beef, kidney beans, tomatoes, onions and garlic. Best served over rice with a dollop of sour cream and some cheese on top.",
-	  "ratings": 4,
-	  "duration": 32,
-	  "level":"hot",
-	  "url":"http://37.media.tumblr.com/51bedc9e7334de555c1b00dd3ed8cf22/tumblr_mo9e0eI0fa1riu320o1_500.jpg",
-	  "ingredients": 
-	  	[
-		    {
-		      "vegetable": "40ml"
-		    }
-	  	],
-	  "method": 
-	  	[
-
-		    {
-		      "1": "In a  sized stock pot, heat the oil over  heat. Saute onions, chile peppers andgarlic until soft."
-		    }
-	  	]
-	},
+	}
 
   ]
     };
-}]);
+}]).filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+    for (var i=0; i<total; i++)
+      input.push(i);
+    return input;
+  	};
+	});
 
 	initialiseWithall();
-
 
 	$( "li.fade" ).hover(function() {
 	  	$( this ).fadeOut( 100 );
@@ -957,6 +583,16 @@ angular.module('mealApp', [])
 
 		}
 	});
+
+	$("#slide").bind("click", function(){
+		$("#slide").css({"background-color":"#F39C12"});
+		$("#byValue").css({"background-color":"#22313F"});
+	});
+
+	$("#byValue").bind("click", function(){
+		$("#byValue").css({"background-color":"#F39C12"});
+		$("#slide").css({"background-color":"#22313F"});
+	});
 });
 
 function restoreOriginalfont(){
@@ -965,7 +601,6 @@ function restoreOriginalfont(){
 
 function initialiseWithall(){
 	$('#all').find('a').trigger('click');
-
 }
 
 function changeTabBarIndicatorto(linkName){
