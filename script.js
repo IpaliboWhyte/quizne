@@ -5,9 +5,10 @@ var original = $('.navBar');
 var durationSelected;
 var durationNormal;
 var Middelbarishidden = false;
+var bouncyTimer;
 
 $( document ).ready(function() {
-var currentSection = "info";
+  var currentSection = "info";
 
 angular.module('mealApp', ['ui.bootstrap'])
     .controller('mealController', ['$scope', 'mealFactory', function ($scope, mealFactory) {
@@ -18,7 +19,7 @@ angular.module('mealApp', ['ui.bootstrap'])
 
 	$scope.filteredReciepes = []
   ,$scope.currentPage = 1
-  ,$scope.numPerPage = 8
+  ,$scope.numPerPage = 16
   ,$scope.maxSize = 100;
   
   $scope.numPages = function () {
@@ -206,7 +207,7 @@ angular.module('mealApp', ['ui.bootstrap'])
       "facetPos":"middleBar",
       "title": [
         {
-          "name":"MiddleBar Filter",
+          "name":"Genre",
           "size":"20",
           "color":"#BDC3C7"
         }
@@ -238,12 +239,49 @@ angular.module('mealApp', ['ui.bootstrap'])
         }
       ]
     },
-  // *******Middle Input 1 ********
+  // *******Middle Input 2 ********
     {
       "facetPos":"middleBar",
       "title": [
         {
-          "name":"More Filter",
+          "name":"Genre",
+          "size":"20",
+          "color":"#BDC3C7"
+        }
+      ],
+      "input": [
+        {
+          "name":"musicGenre",
+          "type":"radio",
+          "value":"genre",
+          "min": "",
+          "max": "",
+          "colorStyle":"#BFBFBF",
+          "bodyStyle":"border:0; width:150px; height:30px; background:none; background-color:#22313F;",
+          "inputStyle":"color:none; margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;",
+          "options":[
+            {
+              "inputMargin": "10",
+              "optionValue": "world"
+            },
+            {
+              "inputMargin": "10",
+              "optionValue": "classic"
+            },
+            {
+              "inputMargin": "10",
+              "optionValue": "noclassic"
+            }
+          ]
+        }
+      ]
+    },
+  // *******Middle Input 3 ********
+    {
+      "facetPos":"middleBar",
+      "title": [
+        {
+          "name":"Type",
           "size":"20",
           "color":"#BDC3C7"
         }
@@ -255,6 +293,43 @@ angular.module('mealApp', ['ui.bootstrap'])
           "value":"genre",
           "min": "",
           "max": "",
+          "colorStyle":"#BFBFBF",
+          "bodyStyle":"border:0; width:150px; height:30px; background:none; background-color:#22313F;",
+          "inputStyle":"color:none; margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;",
+          "options":[
+            {
+              "inputMargin": "10",
+              "optionValue": "world"
+            },
+            {
+              "inputMargin": "10",
+              "optionValue": "classic"
+            },
+            {
+              "inputMargin": "10",
+              "optionValue": "noclassic"
+            }
+          ]
+        }
+      ]
+    },
+  // *******Middle Input 4 ********
+    {
+      "facetPos":"middleBar",
+      "title": [
+        {
+          "name":"Duration",
+          "size":"20",
+          "color":"#BDC3C7"
+        }
+      ],
+      "input": [
+        {
+          "name":"musicGenre",
+          "type":"slider",
+          "value":"genre",
+          "min": 0,
+          "max": 50,
           "colorStyle":"#BFBFBF",
           "bodyStyle":"border:0; width:150px; height:30px; background:none; background-color:#22313F;",
           "inputStyle":"color:none; margin:3px; background-color:#ECF0F1; display: inline-block; padding:3px; border-radius:5px; font-size:12px;",
@@ -1735,10 +1810,11 @@ angular.module('mealApp', ['ui.bootstrap'])
 
 	$( "li.fade" ).hover(function() {
 	  	$( this ).fadeOut( 100 );
-	 	$( this ).fadeIn( 500 );
+	 	 $( this ).fadeIn( 500 );
 	});
 
-	$( "#mainBody" ).animate({opacity: "1"}, 100, function(){
+	$( "#mainBody" ).animate({opacity: "1"}, 600, function(){
+
 			$( ".navBar" ).animate({bottom: "0px"}, 600);
 	});
 
@@ -1809,26 +1885,48 @@ angular.module('mealApp', ['ui.bootstrap'])
 		$("#slide").css({"background-color":"#22313F"});
 	});
 
-  $("img#hideMiddleBar").bind("click", function(){
+  $("input#hideMiddleBar").bind("click", function(){
+
     if (!Middelbarishidden) {
 
-      $( ".navBar" ).animate({bottom: "-46%"}, 300,function(){
+      $( ".navBar" ).animate({bottom: "-46%"}, 600,function(){
 
-        $("img#hideMiddleBar").attr("src", "show.png");
+        $("input#hideMiddleBar").attr("src", "show.png");
+
+        bouncyTimer = setInterval(bounceIcon, 2000);
+
       });
 
     }else{
 
-      $( ".navBar" ).animate({bottom: "0"}, 300,function(){
+      $( ".navBar" ).animate({bottom: "0"}, 600,function(){
 
-        $("img#hideMiddleBar").attr("src", "hide.png");
+        $("input#hideMiddleBar").attr("src", "hide.png");
+        clearInterval(bouncyTimer);
 
       });
     }
     Middelbarishidden =!Middelbarishidden;
   });
 
+  // Prevent automatic scroll
+  $(".mainContainer").scroll(function (event) {
+    var p = $( ".navBar" );
+    var position = p.offset().top;
+    console.log(position);
+    if (position < 0 && Middelbarishidden) {
+      clearInterval(bouncyTimer);
+    }else if (position > 0 && Middelbarishidden){
+      clearInterval(bouncyTimer);
+      bouncyTimer = setInterval(bounceIcon, 2000);
+    }
+  });
+
 });
+
+function bounceIcon(){
+  $("input#hideMiddleBar").effect( "bounce", {times:3}, "slow" );
+}
 
 function restoreOriginalfont(){
 
