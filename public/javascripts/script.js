@@ -127,7 +127,7 @@ angular.module('mealApp', ['ui.bootstrap'])
 		},
 	]
 
-	$scope.Usersettings = ["text","radio"];
+	$scope.Usersettings = ["radio","text"];
 
 	/*
 	[

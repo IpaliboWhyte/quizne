@@ -2,7 +2,7 @@ html, body
 {
     height: 100%;
     font-family: 'Lato', sans-serif;
-    /*background: url("srabi-foods-wallpaper-hd.jpg") no-repeat center center fixed; */
+    background: url("tumblr_static_8c8sp1lv2w4k4wk4ckkc0w48k.jpg") no-repeat center center fixed; */
     background-color: #ECF0F1;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -23,6 +23,7 @@ html, body
 	height: 65px;
 	background-color: blue;
 	margin: 0px;
+	z-index: 5000;
 }
 
 #rightheader{
@@ -37,7 +38,7 @@ html, body
 #leftheader{	
 	text-align: center;
 	position: relative;
-	background-color: #F39C12;
+	background-color: #2C3E50;
 	width: 20%;
 	min-width:240px;
 	height: 100%;
@@ -48,7 +49,7 @@ html, body
 	font-family: 'PT Sans Narrow', sans-serif;
 	top: 30%;
 	color: #22313F;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .leftsideBar{
@@ -156,15 +157,17 @@ padding: 0 0 0 0px;
 }
 
 #mainBody{
-	opacity: 0;
+	opacity: 0.1;
+
 }
 
 .mainContainer{
-float: right;
+background-color: clear;
+float: left;
 position: relative;
-top: 10%;
+top: 0px;
 width: 80%;
-height: 90%;
+height: 100%;
 overflow:scroll;
 overflow-x: hidden;
 }
@@ -175,19 +178,20 @@ overflow-x: hidden;
 	position: relative;
 	top: 25%;
 	width:100%;
-	height: 75%;
+	height: 80%;
 	z-index: 1000;
 	float: left;
 }
 
 .navBar{
-	bottom: -20%;
+	bottom: -50%;
 	position: relative;
 	width:100%;
-	height: 10%;
+	height: 50%;
 	background-color: black;
 	opacity: 0.8;
 	color: white;
+	overflow:auto;
 }
 
 .navBar_item{
@@ -197,6 +201,14 @@ overflow-x: hidden;
 	height: 20px;
 	color: white;
 	font-size: 13px;
+}
+
+#hideMiddleBar{
+	position:absolute; 
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 100px;
 }
 
 #all{
@@ -280,6 +292,7 @@ H1{
 }
 
 .contentContainer{
+	position: relative;
 	width: 100%;
 	height: auto;
 	min-height: 70%;
@@ -309,7 +322,7 @@ H1{
 	color: white;
 }
 
-#mealTypeForm select{
+select{
 	color: #BFBFBF;
 	border: 0;
 	width: 80%;
@@ -375,26 +388,26 @@ H1{
 	display: inline-block;
 	position: relative;
 	background-color: #F39C12; 
-	width:230px; 
+	width:200px; 
 	height:150px;
 	margin-top: 10px;
-	margin-left: 10px;
+	margin-left: 5px;
+	background-size: 100% 100%;
 }
 
 #contentItemHeader{
 	font-size: 15px;
 	position: absolute;
-	background-color: black;
-	opacity: 0.7;
+	background-color: rgba(0, 0, 0, 0.7);
 	height: 30%;
 	width: 100%;
 }
 
 #contentItemLevel{
 	position: absolute;
-	background-color: #F39C12;
+	background-color: #BFBFBF;
 	border-radius: 3px;
-	opacity: 0.9;
+	opacity: 0.95;
 	width: auto;
 	height: auto;
 	padding: 5px;
